@@ -15,12 +15,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <!-- meta -->
   
+  
+  <meta name="theme-color" content="#f24e32">
+  
+  <meta name="msapplication-TileColor" content="#f24e32">
+  
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/browserconfig.xml">
+  
+  
   <!-- link -->
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
   
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
 
+  
+  
+  <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicon.ico" type="image/x-icon">
+  
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/favicon-32x32.png" type="image/x-icon" sizes="32x32">
+  
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/apple-touch-icon.png" type="image/png" sizes="180x180">
+  
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/safari-pinned-tab.svg" color="#f24e32">
+  
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/site.webmanifest">
+  
   
 
   
@@ -37,6 +57,16 @@
     }
   </script>
 
+  
+    <!-- ga -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-132766075-1', 'http://yoursite.com');
+      ga('send', 'pageview');
+    </script>
   
   
 </head>
@@ -74,6 +104,12 @@
   						<li>
 								<a id="archives" class="nav flat-box" href="/archives/">
 									<i class="fas fa-archive fa-fw"></i>&nbsp;Archives
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="about" class="nav flat-box" href="/about/">
+									<i class="fas fa-user fa-fw"></i>&nbsp;About
 								</a>
 							</li>
       			
@@ -130,6 +166,12 @@
 										</a>
                   </li>
               
+                  <li>
+										<a id="about" class="nav flat-box" href="/about/">
+											<i class="fas fa-user fa-fw"></i>&nbsp;About
+										</a>
+                  </li>
+              
        
       </ul>
 		</nav>
@@ -159,6 +201,11 @@
 
     
       
+    
+    <div class="metatag cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;<a class="categories" href="/categories/other/">other</a>
+    </div>
+
 
     
 
@@ -191,15 +238,42 @@
         
           <section class="meta" id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-18T13:41:10+08:00" content="2019-01-18"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-18T22:54:28+08:00" content="2019-01-18"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
                 &nbsp;2019-01-18
               </time>
             
+            
+                
+                <div class="metatag tags"><a class="tag" href="/tags/test/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;test</a></div>
             
             
           </section>
         
 
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2019/01/18/My-New-Post/" rel="prev" title="My New Post">
+                                    
+                                        My New Post
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/rubbish/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>rubbish</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
         
 
     </section>
@@ -221,9 +295,29 @@
       
         
 
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;Related Posts</h4>
+        <ul>
+            
+                <li><a href="http://yoursite.com/2019/01/18/My-New-Post/">My New Post</a></li>
+            
+        </ul>
+    </div>
+
 
       
 
+      
+        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
+        
+          <section id="comments">
+            <div id="disqus_thread">
+              ⚠️  Unable to load comment system, please make sure your network can access <a href="https://disqus.com">Disqus</a> 。
+            </div>
+          </section>
+        
+        
+        
       
     </section>
   </article>
@@ -250,7 +344,7 @@
   <div class="content pure">
     
       <div class="avatar">
-        <img class="avatar" src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/avatar/avatar.png">
+        <img class="avatar" src="https://cdn.jsdelivr.net/gh/wjwrobot/arch-config/kurisu1.png">
       </div>
     
     
@@ -267,6 +361,8 @@
       <div class="social-wrapper">
         
           
+            <a href="mailto:wjwsuper123@163.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
         
           
             <a href="https://github.com/wjwrobot" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
@@ -280,177 +376,6 @@
     
   </div>
 </section>
-
-      
-    
-  
-    
-      
-      
-        <section class="plain">
-  
-<header class="pure">
-  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;注意啦～</div>
-  
-    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com/wiki/material-x/" title="https://xaoxuu.com/wiki/material-x/">
-    <i class="fas fa-question-circle fa-fw"></i></a>
-  
-</header>
-
-  <div class="content pure">
-    <p>本站使用 <a href="https://xaoxuu.com/wiki/material-x/">Material X</a> 作为主题，喜欢这个主题的朋友可以阅读文档进行安装哦，超喜欢的话还可以安利给身边的朋友哦～</p>
-
-  </div>
-</section>
-
-      
-    
-  
-    
-      
-      
-        
-
-      
-    
-  
-    
-      
-      
-        
-
-      
-    
-  
-    
-      
-      
-        <section class="list">
-  
-<header class="pure">
-  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;精选项目</div>
-  
-    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://xaoxuu.com/projects/" title="https://xaoxuu.com/projects/">
-    <i class="fas fa-arrow-right fa-fw"></i></a>
-  
-</header>
-
-  <div class="content pure">
-    <ul class="entry">
-      
-        <li><a class="flat-box" title="https://xaoxuu.com/wiki/axkit/" href="https://xaoxuu.com/wiki/axkit/">
-          <div class="name">
-            
-              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;AXKit
-          </div>
-          
-            <div class="badge">(iOS开源库)</div>
-          
-        </a></li>
-      
-        <li><a class="flat-box" title="https://xaoxuu.com/wiki/noticeboard/" href="https://xaoxuu.com/wiki/noticeboard/">
-          <div class="name">
-            
-              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;NoticeBoard
-          </div>
-          
-            <div class="badge">(iOS开源库)</div>
-          
-        </a></li>
-      
-        <li><a class="flat-box" title="https://xaoxuu.com/heartmate/" href="https://xaoxuu.com/heartmate/">
-          <div class="name">
-            
-              <i class="fas fa-heartbeat fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;HeartMate
-          </div>
-          
-            <div class="badge">(iOS应用程序)</div>
-          
-        </a></li>
-      
-        <li><a class="flat-box" title="https://xaoxuu.com/wiki/material-x/" href="https://xaoxuu.com/wiki/material-x/">
-          <div class="name">
-            
-              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;Material X
-          </div>
-          
-            <div class="badge">(Hexo博客主题)</div>
-          
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
-
-      
-    
-  
-    
-      
-      
-        <section class="list">
-  
-<header class="pure">
-  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;特别链接</div>
-  
-</header>
-
-  <div class="content pure">
-    <ul class="entry">
-      
-        <li><a class="flat-box" title="https://github.com/wjwrobot" href="https://github.com/wjwrobot">
-          <div class="name">
-            
-              <i class="fas fa-comment-dots fa-fw" aria-hidden="true"></i>
-            
-            &nbsp;&nbsp;关于我 / 留言板
-          </div>
-          
-        </a></li>
-      
-    </ul>
-  </div>
-</section>
-
-      
-    
-  
-    
-      
-      
-        
-
-
-  <section class="music">
-    
-<header class="pure">
-  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;最近在听</div>
-  
-    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xiami.com/recent/229191753" title="https://www.xiami.com/recent/229191753">
-    <i class="far fa-heart fa-fw"></i></a>
-  
-</header>
-
-    <div class="content pure">
-      
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
-  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="xiami" data-type="playlist" data-id="357619169" data-volume="0.7">
-  </div>
-  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
-
-
-    </div>
-  </section>
-
 
       
     
@@ -477,6 +402,197 @@
       
     
   
+    
+      
+      
+        
+  <section class="category">
+    
+<header class="pure">
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Categories</div>
+  
+</header>
+
+    <div class="content pure">
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/other/" href="/categories/other/"><div class="name">other</div><div class="badge">(1)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class="tagcloud">
+    
+<header class="pure">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+</header>
+
+    <div class="content pure">
+      <a href="/tags/rubbish/" style="font-size: 14px; color: #999">rubbish</a> <a href="/tags/test/" style="font-size: 14px; color: #999">test</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        <section class="list">
+  
+<header class="pure">
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Good Projects</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://wjwrobot.github.io/projects/" title="https://wjwrobot.github.io/projects/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="project/autodriver/" href="/project/autodriver/">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Auto Driver
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="project/nlp/" href="/project/nlp/">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Speech Recognition
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="project/cv/" href="/project/cv/">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Computer Vision
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="project/math/" href="/project/math/">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Math
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class="music">
+    
+<header class="pure">
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Recent Listening</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xiami.com/recent/229191753" title="https://www.xiami.com/recent/229191753">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class="content pure">
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="xiami" data-type="playlist" data-id="368913431" data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        <section class="plain">
+  
+<header class="pure">
+  <div><i class="fas fa-bullhorn fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Note</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://wjwrobot.github.io/notes/" title="https://wjwrobot.github.io/notes/">
+    <i class="fas fa-question-circle fa-fw"></i></a>
+  
+</header>
+
+  <div class="content pure">
+    <p>Welcome</p>
+
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        <section class="list">
+  
+<header class="pure">
+  <div><i class="fas fa-link fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Link</div>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="https://github.com/wjwrobot" href="https://github.com/wjwrobot">
+          <div class="name">
+            
+              <i class="fas fa-comment-dots fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;About me
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
 
 
         </aside>
@@ -488,6 +604,8 @@
   
     <div class="social-wrapper">
       
+        
+          <a href="mailto:wjwsuper123@163.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
         
       
         
@@ -560,6 +678,26 @@
 
   
   
+  
+    
+      
+        <script>
+          var disqus_shortname = 'kurisu-makise';
+          
+            var disqus_url = 'http://yoursite.com/2019/01/18/hello-world/';
+          
+          (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+      
+      
+      
+    
   
   
     <script src="/js/app.js"></script>
