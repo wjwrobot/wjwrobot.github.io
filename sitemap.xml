@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://wjwrobot.github.io/project/math/index.html</loc>
+    <loc>https://wjwrobot.github.io/2019/01/20/build_site_with_github/</loc>
     
-    <lastmod>2019-01-20T06:25:48.046Z</lastmod>
+    <lastmod>2019-01-20T14:30:08.355Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2019/01/18/My-New-Post/</loc>
+    
+    <lastmod>2019-01-20T11:35:38.332Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://wjwrobot.github.io/about/index.html</loc>
     
-    <lastmod>2019-01-20T04:36:16.940Z</lastmod>
+    <lastmod>2019-01-20T10:51:11.169Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/project/math/index.html</loc>
+    
+    <lastmod>2019-01-20T06:25:48.046Z</lastmod>
     
   </url>
   
@@ -47,13 +61,6 @@
     <loc>https://wjwrobot.github.io/project/autodriver/index.html</loc>
     
     <lastmod>2019-01-19T14:13:32.797Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wjwrobot.github.io/2019/01/18/My-New-Post/</loc>
-    
-    <lastmod>2019-01-18T14:49:27.011Z</lastmod>
     
   </url>
   
