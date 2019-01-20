@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wjwrobot.github.io/project/math/index.html</loc>
+    
+    <lastmod>2019-01-20T06:25:48.046Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wjwrobot.github.io/about/index.html</loc>
     
     <lastmod>2019-01-20T04:36:16.940Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://wjwrobot.github.io/project/nlp/index.html</loc>
     
     <lastmod>2019-01-19T14:19:13.434Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wjwrobot.github.io/project/math/index.html</loc>
-    
-    <lastmod>2019-01-19T14:16:13.707Z</lastmod>
     
   </url>
   
