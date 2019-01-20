@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wjwrobot.github.io/about/index.html</loc>
+    
+    <lastmod>2019-01-20T04:36:16.940Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wjwrobot.github.io/2019/01/20/hello-world/</loc>
     
     <lastmod>2019-01-20T02:52:11.003Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>https://wjwrobot.github.io/project/cv/index.html</loc>
     
     <lastmod>2019-01-20T02:12:39.573Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://wjwrobot.github.io/about/index.html</loc>
-    
-    <lastmod>2019-01-19T14:24:41.557Z</lastmod>
     
   </url>
   
