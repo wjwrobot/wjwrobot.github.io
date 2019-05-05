@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Building Personal Website with Github | faust&#39;s blog</title>
+  <title>Enable Colaboratory to Use Local Runtime | faust&#39;s blog</title>
   
   
 
@@ -169,13 +169,13 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">Building Personal Website with Github</h1>
+          <h1 class="title">Enable Colaboratory to Use Local Runtime</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-20
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-23
       </time>
     
 
@@ -183,7 +183,7 @@
       
     
     <div class="metatag cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;<a class="categories" href="/categories/Nodejs/">Nodejs</a>
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;<a class="categories" href="/categories/Software/">Software</a>
     </div>
 
 
@@ -204,53 +204,35 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>A tutorial for building your own website make use of github and hexo, with a beautiful theme “material-x”.</p>
+        <p>Enable Google Colaboratory to use local runtime through Jupyter Notebook.</p>
 <a id="more"></a>
-<h2 id="Install-hexo"><a href="#Install-hexo" class="headerlink" title="Install hexo"></a>Install hexo</h2><p>​    You should alread install <strong>git</strong> and <strong>nodejs</strong>.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>​    Hexo create a directory for your project:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init &lt;folder&gt;</span><br><span class="line">$ <span class="built_in">cd</span> &lt;folder&gt;</span><br></pre></td></tr></table></figure>
-<p>​    Hexo will build a skeleton for your site:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>​    Test whether everything is ok:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>​    If it works well. you can change the theme, which can be found on <a href="https://hexo.io/themes/" target="_blank" rel="noopener">hexo</a> site. I will use <code>material-x</code>  <a href="https://xaoxuu.com/wiki/material-x/index.html" target="_blank" rel="noopener">theme</a> :</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes</span><br><span class="line">$ git <span class="built_in">clone</span> https://github.com/xaoxuu/hexo-theme-material-x themes/material-x</span><br></pre></td></tr></table></figure>
-<p>​    Then install dependencies:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -S hexo-generator-search hexo-generator-feed hexo-renderer-less hexo-autoprefixer hexo-generator-json-content hexo-recommended-posts hexo-helper-qrcode</span><br></pre></td></tr></table></figure>
-<p>​    Go to the your project’s root directory, and configure the file <strong>_config.yml</strong>.</p>
-<p>​    Item <strong>theme:</strong> change its value to your theme’s name, for example:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">theme: material-x</span><br></pre></td></tr></table></figure>
-<h3 id="Install-git-deploy-plugin"><a href="#Install-git-deploy-plugin" class="headerlink" title="Install git deploy plugin"></a>Install git deploy plugin</h3><p>​    Look for <strong>deploy</strong> item ,and modify it like follow:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">   type: git</span><br><span class="line">   repo: git@github.com:wjwrobot/wjwrobot.github.io.git</span><br><span class="line">   branch: master</span><br></pre></td></tr></table></figure>
-<p>​    After that we are going to install git deploy plugin:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>​    Latsly, you can configure your theme according to this <a href="https://xaoxuu.com/wiki/material-x/config/index.html" target="_blank" rel="noopener">tutorial</a> .</p>
-<h2 id="Deploy-to-your-github-website"><a href="#Deploy-to-your-github-website" class="headerlink" title="Deploy to your github website"></a>Deploy to your github website</h2><p>​    Before deploy it to github, test it on local machine:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generator <span class="comment"># or hexo g</span></span><br><span class="line">$ hexo server <span class="comment"># or hexo s</span></span><br></pre></td></tr></table></figure>
-<p>​    Open a browser ,input following address:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:4000/</span><br></pre></td></tr></table></figure>
-<p>​    If work well deploy it to github</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy <span class="comment"># or hexo d</span></span><br></pre></td></tr></table></figure>
-<p>​    </p>
-<h2 id="Create-a-repo-for-your-theme"><a href="#Create-a-repo-for-your-theme" class="headerlink" title="Create a repo for your theme"></a>Create a repo for your theme</h2><p>​    Change your pwd to your installed theme directory. Then use browser to create a repo and name it (e.g.<strong>hexo-theme-material-x</strong>). Change remote origin to your repo and add the origin author’s repo as remote upstream for later updating.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git remote -v</span><br><span class="line">$ git remote remove origin</span><br><span class="line">$ git remote add origin https://github.com/wjwrobot/hexo-theme-material-x.gi</span><br><span class="line">$ git push origin master</span><br><span class="line">$ git remote add upstream https://github.com/xaoxuu/hexo-theme-material-x.git</span><br></pre></td></tr></table></figure>
-<p>​    If upstream has update, you can use <strong>fetch</strong> command to get it and <strong>merge</strong> upstream/master to local master:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch upstream</span><br><span class="line">$ git merge upstream/master</span><br></pre></td></tr></table></figure>
-<p>​    Push to remote repo:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin master</span><br></pre></td></tr></table></figure>
+<h3 id="Install-Jupyter-Notebook"><a href="#Install-Jupyter-Notebook" class="headerlink" title="Install Jupyter Notebook"></a>Install Jupyter Notebook</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pacman -S jupyter-notebook</span><br></pre></td></tr></table></figure>
+<p>Enable interactive Javascript widgets in the notebooks:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo jupyter nbextension <span class="built_in">enable</span> --py --sys-prefix widgetsnbextension</span><br></pre></td></tr></table></figure>
+<h3 id="Install-and-enable-the-jupyter-http-over-ws-jupyter-extension"><a href="#Install-and-enable-the-jupyter-http-over-ws-jupyter-extension" class="headerlink" title="Install and enable the jupyter_http_over_ws jupyter extension"></a>Install and enable the <code>jupyter_http_over_ws</code> jupyter extension</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo pip install jupyter_http_over_ws</span><br><span class="line">$ jupyter serverextension <span class="built_in">enable</span> --py jupyter_http_over_ws</span><br></pre></td></tr></table></figure>
+<h3 id="Start-server-and-authenticate"><a href="#Start-server-and-authenticate" class="headerlink" title="Start server and authenticate"></a>Start server and authenticate</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ jupyter notebook \</span><br><span class="line">  --NotebookApp.allow_origin=<span class="string">'https://colab.research.google.com'</span> \</span><br><span class="line">  --port=8888 \</span><br><span class="line">  --NotebookApp.port_retries=0</span><br></pre></td></tr></table></figure>
+<h3 id="Connect-to-the-local-runtime"><a href="#Connect-to-the-local-runtime" class="headerlink" title="Connect to the local runtime"></a>Connect to the local runtime</h3><p>In Colaboratory, click the “Connect” button and select “Connect to local runtime…”</p>
+<p><em>Note:</em></p>
+<p>If you use firefox, you must set the <code>network.websocket.allowInsecureFromHTTPS</code> to be true.</p>
+<p>In the address bar, type <strong>about:config</strong> and press Enter, then type <code>network.websocket.allowInsecureFromHTTPS</code> and set its value to be true.</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References:"></a>References:</h3><ul>
+<li><p><a href="https://wiki.archlinux.org/index.php/Jupyter" target="_blank" rel="noopener">Install Jupyter</a></p>
+</li>
+<li><p><a href="https://research.google.com/colaboratory/local-runtimes.html" target="_blank" rel="noopener">Colaboratory local runtime</a></p>
+</li>
+</ul>
 
       </div>
         
           <section class="meta" id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-05-05T21:06:29+08:00" content="2019-05-05"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2019-05-05
+              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-23T17:09:56+08:00" content="2019-01-23"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2019-01-23
               </time>
             
             
                 
-                <div class="metatag tags"><a class="tag" href="/tags/git/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;git</a></div> <div class="metatag tags"><a class="tag" href="/tags/hexo/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;hexo</a></div> <div class="metatag tags"><a class="tag" href="/tags/nodejs/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;nodejs</a></div>
+                <div class="metatag tags"><a class="tag" href="/tags/Colaboratory/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;Colaboratory</a></div> <div class="metatag tags"><a class="tag" href="/tags/Jupyter-Notebook/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;Jupyter Notebook</a></div>
             
             
               
@@ -259,7 +241,7 @@
     <div class="-mob-share-list share-body">
       
         
-          <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wjwrobot.github.io/2019/01/20/build_site_with_github/&title=Building Personal Website with Github | faust's blog&summary=A tutorial for building your own website make use of github and hexo, with a beautiful theme “material-x”.">
+          <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wjwrobot.github.io/2019/01/23/Enable-Colaboratory-use-local-runtime/&title=Enable Colaboratory to Use Local Runtime | faust's blog&summary=Enable Google Colaboratory to use local runtime through Jupyter Notebook.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
             
@@ -267,7 +249,7 @@
         
       
         
-          <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wjwrobot.github.io/2019/01/20/build_site_with_github/&title=Building Personal Website with Github | faust's blog&summary=A tutorial for building your own website make use of github and hexo, with a beautiful theme “material-x”.">
+          <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wjwrobot.github.io/2019/01/23/Enable-Colaboratory-use-local-runtime/&title=Enable Colaboratory to Use Local Runtime | faust's blog&summary=Enable Google Colaboratory to use local runtime through Jupyter Notebook.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
             
@@ -275,7 +257,7 @@
         
       
         
-          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQW7DMAwEwPz/0+k1QGt3SYqFC4xPQZo4Gh9EdcnXK77eH9fnO1efvHrn++vknftfPHDh4eHhDZb+/br/TAJLwPeMfD0/PAI8PDy8Nd79Fn+/oGRZybaePNxqWcLDw8N7Ji/aoJOlxId4PDw8vP/Fy/H3JaT6mPDw8PCexstvnS90Ht0mEcaxrAUPDw8v5uVdpOe8Xunv4eHh4Y276tVQNT9AV8tGc7V4eHh4C7x8w52zexv9pIWGh4eHt8GrtqAmJ/dqcJAPbF2+xsPDw1vmzZv9k8GphJo/gtekCuHh4eG1ukLz5n1vmCBZdDUKwcPDwzvLyzfxeVxbZcwP8Xh4eHh7vF6rKS8h1YGAeePtlzACDw8P7xBvHjr0Ytnq4ygUDzw8PLwFXvUA3QsmqsuKRqmCeAIPDw9vgzfffO8XN3+nmjPg4eHhbfOqx+u8VOTjAtX7NwsSHh4e3gKvNzTQG3vKW27VVOHwTAQeHh7euBj0SkUvFK62xC6HrvDw8PCO8pJbJ5tytSk1iWjLhQoPDw9vjVddxOTYnS+6WiSOPWM8PDy8oMO10QyrDhmcHdvCw8PD2+PlQUAvik0O0PPRrmYYgYeHhzfm9cpAr/N2tmC8evUEDw8Pb4HXG5yqhhq9oYT37YWHh4e3zctjiLz1VR07qA4cFMIIPDw8vDVeb/OdtPYnd46KEx4eHt4yrzrkNGlT5aNXowsPDw/vKO9dvJpbc/wIesf0y7/i4eHhLfDme2webUwKRnLnlRKCh4eHdzRuKDeigjAif0CFMQU8PDy8Nd5ki8+HD6oPrtf6ilJqPDw8vD/kNX8mbpXl41bRt/Dw8PAewOs1seYDr9XjOx4eHt42Lzn4ToKGSYA7+hU8PDy8BV71H/48Qu19qxf7jkINPDw8vJT3BZ6gFttnNcbeAAAAAElFTkSuQmCC">
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADO0lEQVR42u3ay2rjQBAF0Pn/n/bAMJuQRLm3SgG7fXoVhC31aUNK9fjzJ16Pfyv5zPUnH5/W9Xc/f+b6PjcvbGxs7BdhPy5X8siE2l757jiuDyuxYGNjY5/Kvt5uvvUkzOQBLAmf1/v89jo2Njb2W7Lzl/58K9chKj9WbGxsbOx860mwSRKbPJG464ixsbGxz2bnG00K9I945SFzU/DCxsbGPpu9SS2e7e9f7G9jY2NjPyX7MVrtME37rXt3+8VOsLGxsQ9iz0r/1yX7pDHcJiT5E4vAho2NjX0Euy0MtSM77ZHlpPaAfojb2NjY2Eew2we0rdy25ZCPEOXFJmxsbOzz2Jv2ah6Q2oNLguU+KGJjY2Ofwc7L+tEr/qJ6M2sttEnUh7iNjY2NfTR7P6yzafEW6UQ8vlMkIdjY2NgvyE5e9PeFoTaYzcZ6kuFRbGxs7Hdj58GmHejZHOXsntjY2NhnszfpwazwtGknt4WkD9exsbGx34CdNFnbcn8bGts9FMEYGxsb+yB2PhaTNwDaVkE7+rMvVGFjY2OfxJ790/+NYZr9EE+RMmFjY2O/AXsWCfODuKFZGzcJvtg5NjY29kHsvBB/Vzs2CWP5geaFJ2xsbOxT2W0hKdnEpr7Vphlt2oONjY19HjsftclvuklI8lZxOwaEjY2N/Q7sWSLRJjO/UaXPQ91tXWVsbGzsp2HPikfJrZMwdm+SM2z0YmNjY784ux3EmQW85IlFpC0Hj1ZxGxsbG/vp2XcVjGaJQQueNZuLc8LGxsZ+QfZsUKYdxJkdYnJl9nRsbGzsU9l3tV03+VDbNp61MbCxsbFPZedBYpZUzBoGm3Gf3IWNjY19Ejt5fd8Ufdpkox0Gyn82bGxs7FPZ7UDMrG0wO9a2AVA0CbCxsbFflv0oV95CmJ36rHmQF6H+X8HGxsY+iL2ZY5kdxL4wlBxB3R7AxsbGfnH2vliTP3KTZrSjQj/8DNjY2NjHsfNQNBuXuaHitU5ssLGxsbHzGvssNLZDP6sxTWxsbOy3ZM8K90kQaoc+bwil2NjY2Mex21A0KxW192+fXhSksLGxsQ9iz0o5bTthv91ZkzgZPMLGxsZ+WfZf4lb9YV/y5Q4AAAAASUVORK5CYII=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
           
@@ -283,7 +265,7 @@
         
       
         
-          <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=https://wjwrobot.github.io/2019/01/20/build_site_with_github/&title=Building Personal Website with Github | faust's blog&summary=A tutorial for building your own website make use of github and hexo, with a beautiful theme “material-x”.">
+          <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=https://wjwrobot.github.io/2019/01/23/Enable-Colaboratory-use-local-runtime/&title=Enable Colaboratory to Use Local Runtime | faust's blog&summary=Enable Google Colaboratory to use local runtime through Jupyter Notebook.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
             
@@ -291,7 +273,7 @@
         
       
         
-          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsklEQVR42u3aQW7DMAwEwPz/0+k1QGt3SYqFC4xPQZo4Gh9EdcnXK77eH9fnO1efvHrn++vknftfPHDh4eHhDZb+/br/TAJLwPeMfD0/PAI8PDy8Nd79Fn+/oGRZybaePNxqWcLDw8N7Ji/aoJOlxId4PDw8vP/Fy/H3JaT6mPDw8PCexstvnS90Ht0mEcaxrAUPDw8v5uVdpOe8Xunv4eHh4Y276tVQNT9AV8tGc7V4eHh4C7x8w52zexv9pIWGh4eHt8GrtqAmJ/dqcJAPbF2+xsPDw1vmzZv9k8GphJo/gtekCuHh4eG1ukLz5n1vmCBZdDUKwcPDwzvLyzfxeVxbZcwP8Xh4eHh7vF6rKS8h1YGAeePtlzACDw8P7xBvHjr0Ytnq4ygUDzw8PLwFXvUA3QsmqsuKRqmCeAIPDw9vgzfffO8XN3+nmjPg4eHhbfOqx+u8VOTjAtX7NwsSHh4e3gKvNzTQG3vKW27VVOHwTAQeHh7euBj0SkUvFK62xC6HrvDw8PCO8pJbJ5tytSk1iWjLhQoPDw9vjVddxOTYnS+6WiSOPWM8PDy8oMO10QyrDhmcHdvCw8PD2+PlQUAvik0O0PPRrmYYgYeHhzfm9cpAr/N2tmC8evUEDw8Pb4HXG5yqhhq9oYT37YWHh4e3zctjiLz1VR07qA4cFMIIPDw8vDVeb/OdtPYnd46KEx4eHt4yrzrkNGlT5aNXowsPDw/vKO9dvJpbc/wIesf0y7/i4eHhLfDme2webUwKRnLnlRKCh4eHdzRuKDeigjAif0CFMQU8PDy8Nd5ki8+HD6oPrtf6ilJqPDw8vD/kNX8mbpXl41bRt/Dw8PAewOs1seYDr9XjOx4eHt42Lzn4ToKGSYA7+hU8PDy8BV71H/48Qu19qxf7jkINPDw8vJT3BZ6gFttnNcbeAAAAAElFTkSuQmCC">
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADO0lEQVR42u3ay2rjQBAF0Pn/n/bAMJuQRLm3SgG7fXoVhC31aUNK9fjzJ16Pfyv5zPUnH5/W9Xc/f+b6PjcvbGxs7BdhPy5X8siE2l757jiuDyuxYGNjY5/Kvt5uvvUkzOQBLAmf1/v89jo2Njb2W7Lzl/58K9chKj9WbGxsbOx860mwSRKbPJG464ixsbGxz2bnG00K9I945SFzU/DCxsbGPpu9SS2e7e9f7G9jY2NjPyX7MVrtME37rXt3+8VOsLGxsQ9iz0r/1yX7pDHcJiT5E4vAho2NjX0Euy0MtSM77ZHlpPaAfojb2NjY2Eew2we0rdy25ZCPEOXFJmxsbOzz2Jv2ah6Q2oNLguU+KGJjY2Ofwc7L+tEr/qJ6M2sttEnUh7iNjY2NfTR7P6yzafEW6UQ8vlMkIdjY2NgvyE5e9PeFoTaYzcZ6kuFRbGxs7Hdj58GmHejZHOXsntjY2NhnszfpwazwtGknt4WkD9exsbGx34CdNFnbcn8bGts9FMEYGxsb+yB2PhaTNwDaVkE7+rMvVGFjY2OfxJ790/+NYZr9EE+RMmFjY2O/AXsWCfODuKFZGzcJvtg5NjY29kHsvBB/Vzs2CWP5geaFJ2xsbOxT2W0hKdnEpr7Vphlt2oONjY19HjsftclvuklI8lZxOwaEjY2N/Q7sWSLRJjO/UaXPQ91tXWVsbGzsp2HPikfJrZMwdm+SM2z0YmNjY784ux3EmQW85IlFpC0Hj1ZxGxsbG/vp2XcVjGaJQQueNZuLc8LGxsZ+QfZsUKYdxJkdYnJl9nRsbGzsU9l3tV03+VDbNp61MbCxsbFPZedBYpZUzBoGm3Gf3IWNjY19Ejt5fd8Ufdpkox0Gyn82bGxs7FPZ7UDMrG0wO9a2AVA0CbCxsbFflv0oV95CmJ36rHmQF6H+X8HGxsY+iL2ZY5kdxL4wlBxB3R7AxsbGfnH2vliTP3KTZrSjQj/8DNjY2NjHsfNQNBuXuaHitU5ssLGxsbHzGvssNLZDP6sxTWxsbOy3ZM8K90kQaoc+bwil2NjY2Mex21A0KxW192+fXhSksLGxsQ9iz0o5bTthv91ZkzgZPMLGxsZ+WfZf4lb9YV/y5Q4AAAAASUVORK5CYII=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png">
           
@@ -313,16 +295,16 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
-                                <a href="/2019/01/23/Enable-Colaboratory-use-local-runtime/" rel="prev" title="Enable Colaboratory to Use Local Runtime">
+                                <a href="/2019/05/05/Install-and-Configure-Arch-Linux/" rel="prev" title="Install and Configure Arch Linux">
                                   
-                                      Enable Colaboratory to Use Local Runtime
+                                      Install and Configure Arch Linux
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/Colaboratory/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Colaboratory</a> <a class="tag" href="/tags/Jupyter-Notebook/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Jupyter Notebook</a>
+                                    <a class="tag" href="/tags/Arch-Linux/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Arch Linux</a> <a class="tag" href="/tags/Linux/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Linux</a>
                                 </h6>
                             
                         </span>
@@ -333,16 +315,16 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2019/01/18/My-New-Post/" rel="prev" title="My New Post">
+                                <a href="/2019/01/20/build_site_with_github/" rel="prev" title="Building Personal Website with Github">
                                     
-                                        My New Post
+                                        Building Personal Website with Github
                                     
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/test/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>test</a>
+                                    <a class="tag" href="/tags/git/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>git</a> <a class="tag" href="/tags/hexo/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>hexo</a> <a class="tag" href="/tags/nodejs/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>nodejs</a>
                                 </h6>
                             
                         </span>
@@ -376,7 +358,7 @@
             
                 <li><a href="https://wjwrobot.github.io/2019/05/05/Install-and-Configure-Arch-Linux/">Install and Configure Arch Linux</a></li>
             
-                <li><a href="https://wjwrobot.github.io/2019/01/23/Enable-Colaboratory-use-local-runtime/">Enable Colaboratory to Use Local Runtime</a></li>
+                <li><a href="https://wjwrobot.github.io/2019/01/20/build_site_with_github/">Building Personal Website with Github</a></li>
             
                 <li><a href="https://wjwrobot.github.io/2019/01/18/My-New-Post/">My New Post</a></li>
             
@@ -407,7 +389,7 @@
 
 <script>
     window.subData = {
-        title: 'Building Personal Website with Github',
+        title: 'Enable Colaboratory to Use Local Runtime',
         tools: true
     }
 </script>
@@ -605,7 +587,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-hexo"><span class="toc-text">Install hexo</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-git-deploy-plugin"><span class="toc-text">Install git deploy plugin</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Deploy-to-your-github-website"><span class="toc-text">Deploy to your github website</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Create-a-repo-for-your-theme"><span class="toc-text">Create a repo for your theme</span></a></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-Jupyter-Notebook"><span class="toc-text">Install Jupyter Notebook</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Install-and-enable-the-jupyter-http-over-ws-jupyter-extension"><span class="toc-text">Install and enable the jupyter_http_over_ws jupyter extension</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Start-server-and-authenticate"><span class="toc-text">Start server and authenticate</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Connect-to-the-local-runtime"><span class="toc-text">Connect to the local runtime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-text">References:</span></a></li></ol>
     </div>
   </section>
 
@@ -706,7 +688,7 @@
         <script>
           var disqus_shortname = 'kurisu-makise';
           
-            var disqus_url = 'https://wjwrobot.github.io/2019/01/20/build_site_with_github/';
+            var disqus_url = 'https://wjwrobot.github.io/2019/01/23/Enable-Colaboratory-use-local-runtime/';
           
           (function(){
             var dsq = document.createElement('script');

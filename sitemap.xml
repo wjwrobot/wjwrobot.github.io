@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wjwrobot.github.io/2019/01/20/build_site_with_github/</loc>
+    
+    <lastmod>2019-05-05T13:06:29.480Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2019/05/05/Install-and-Configure-Arch-Linux/</loc>
+    
+    <lastmod>2019-05-05T12:53:09.460Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2019/01/23/Enable-Colaboratory-use-local-runtime/</loc>
+    
+    <lastmod>2019-01-23T09:09:56.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wjwrobot.github.io/about/index.html</loc>
     
     <lastmod>2019-01-21T16:00:00.000Z</lastmod>
@@ -9,30 +30,23 @@
   </url>
   
   <url>
-    <loc>https://wjwrobot.github.io/2019/01/20/build_site_with_github/</loc>
-    
-    <lastmod>2019-01-20T14:30:08.355Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://wjwrobot.github.io/2019/01/18/My-New-Post/</loc>
     
-    <lastmod>2019-01-20T11:35:38.332Z</lastmod>
+    <lastmod>2019-01-20T11:35:38.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://wjwrobot.github.io/project/index.html</loc>
     
-    <lastmod>2019-01-20T02:13:05.250Z</lastmod>
+    <lastmod>2019-01-20T02:13:05.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://wjwrobot.github.io/project/cv/index.html</loc>
     
-    <lastmod>2019-01-20T02:12:39.573Z</lastmod>
+    <lastmod>2019-01-20T02:12:39.000Z</lastmod>
     
   </url>
   
@@ -46,14 +60,14 @@
   <url>
     <loc>https://wjwrobot.github.io/project/nlp/index.html</loc>
     
-    <lastmod>2019-01-19T14:19:13.434Z</lastmod>
+    <lastmod>2019-01-19T14:19:13.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>https://wjwrobot.github.io/project/autodriver/index.html</loc>
     
-    <lastmod>2019-01-19T14:13:32.797Z</lastmod>
+    <lastmod>2019-01-19T14:13:32.000Z</lastmod>
     
   </url>
   
