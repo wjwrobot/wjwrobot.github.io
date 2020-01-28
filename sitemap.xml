@@ -2,9 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wjwrobot.github.io/2020/01/27/JavaScript-Crash-Course/</loc>
+    
+    <lastmod>2020-01-28T09:43:48.891Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2019/12/02/Using-TensorBoard-with-Pytorch-in-Colab/</loc>
+    
+    <lastmod>2020-01-28T09:38:32.345Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2020/01/28/Link-Static-Dynamic-Library-in-C-C-on-Linux/</loc>
+    
+    <lastmod>2020-01-28T07:12:07.938Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2020/01/24/OpenGL/</loc>
+    
+    <lastmod>2020-01-28T07:01:19.292Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2020/01/27/Build-A-Speech-Assistant-App-with-Python/</loc>
+    
+    <lastmod>2020-01-27T09:09:53.809Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2020/01/24/Machine-Learning-Series-1-Decision-Trees/</loc>
+    
+    <lastmod>2020-01-26T08:12:29.939Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wjwrobot.github.io/2019/05/05/Install-and-Configure-Arch-Linux/</loc>
     
-    <lastmod>2019-05-24T10:45:19.308Z</lastmod>
+    <lastmod>2020-01-24T12:34:03.263Z</lastmod>
     
   </url>
   
