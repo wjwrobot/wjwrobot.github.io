@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wjwrobot.github.io/2020/02/03/PyTorch-Basic/</loc>
+    <lastmod>2020-02-03</lastmod>
+  </url>  <url>
+    <loc>https://wjwrobot.github.io/2020/02/02/C-Type-Casting/</loc>
+    <lastmod>2020-02-02</lastmod>
+  </url>  <url>
     <loc>https://wjwrobot.github.io/2020/01/27/JavaScript-Crash-Course/</loc>
     <lastmod>2020-01-28</lastmod>
   </url>  <url>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Link Static/Dynamic Library in C/C++ on Linux | faust&#39;s blog</title>
+  <title>C++ Type Casting | faust&#39;s blog</title>
   
   
 
@@ -169,13 +169,13 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">Link Static/Dynamic Library in C/C++ on Linux</h1>
+          <h1 class="title">C++ Type Casting</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2020-01-28
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2020-02-02
       </time>
     
 
@@ -204,40 +204,34 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>Note about link library in C/C++.<br><a id="more"></a></p>
-<h2 id="Link-Static-Dynamic-Library-in-C-C-using-GCC-Compiler"><a href="#Link-Static-Dynamic-Library-in-C-C-using-GCC-Compiler" class="headerlink" title="Link Static/Dynamic Library in C/C++ using GCC Compiler"></a>Link Static/Dynamic Library in C/C++ using GCC Compiler</h2><h3 id="Static-Library"><a href="#Static-Library" class="headerlink" title="Static Library"></a>Static Library</h3><p>A static library is basically an archive (like a zip file) of object files, which are compiled from the <em>.c/</em>.cpp source code.</p>
-<p>Compile files into *.o object files.<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c test1.cpp test2.cpp</span><br></pre></td></tr></table></figure></p>
-<p>(The <em>-c</em> switch means: Compile and assemble, but do not link.)</p>
-<p>Thus, we get two files test1.o and test2.o.</p>
-<p>Now, we can use <strong>ar</strong> to put these object files together into a single static library.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ar rsv testlib.a test1.o test2.o</span><br></pre></td></tr></table></figure>
-<p>Now the testlib.a contains test1.o and test2.o.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o test.out test.c testlib.a</span><br></pre></td></tr></table></figure>
-<p>Alternatively, you could use the explicity linking options to link the static library (<strong>-L</strong> switch specifies the static library path and <strong>-l</strong> followed by the name of the static library):</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -o test.out test.c -L. -ltestlib</span><br></pre></td></tr></table></figure>
-<p>The static library is distributed with a function declaration header files <em>.h, so that you know how to invoke them and the compiler takes care of them e.g. linking </em>.a static libraries into your executables.</p>
-<h3 id="Dynamic-Link-Library"><a href="#Dynamic-Link-Library" class="headerlink" title="Dynamic Link Library"></a>Dynamic Link Library</h3><p>The Dynamic Link Library (DLL) is stored separately from the target application and shared among different applications, compared to Static Library. The DLL is the file extension on Windows while on Linux, it is *.so (Shared Object).</p>
-<p>The <em>.so/</em>.dll can be loaded right before the application starts or during the application’s runtime. On Windows, the Win32 API LoadLibrary is used while on Linux gcc compiler, the dlopen function is used.</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared -o libhello.so -fPIC hello.c</span><br></pre></td></tr></table></figure>
-<p>Another example:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ Application.cpp -o Application -I/home/wjw/dev/Youtube/OpenGL/Dependencies/GLFW/include -L/home/wjw/dev/Youtube/OpenGL/Dependencies/GLFW/lib -lglfw</span><br></pre></td></tr></table></figure></p>
-<p>(Where shared library is called <em>libglfw.so</em>)<br>(Note: You should also do<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> LD_LIBRARY_PATH=<span class="variable">$LD_LIBRARY_PATH</span>:~/dev/Youtube/OpenGL/Dependencies/GLFW/lib</span><br></pre></td></tr></table></figure></p>
-<p>)</p>
-<h2 id="Calling-C-Shared-Library-from-Python-Code"><a href="#Calling-C-Shared-Library-from-Python-Code" class="headerlink" title="Calling C++ Shared Library from Python Code"></a>Calling C++ Shared Library from Python Code</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// https://helloacm.com</span></span><br><span class="line"><span class="keyword">extern</span> <span class="string">"C"</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// A function adding two integers and returning the result</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">SampleAddInt</span><span class="params">(<span class="keyword">int</span> i1, <span class="keyword">int</span> i2)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> i1 + i2;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// A function doing nothing ;)</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">SampleFunction1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// insert code here</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// A function always returning one</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">SampleFunction2</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// insert code here</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>Compile it as <strong>Shared Library</strong>:<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">g++ -Wall -O3 -shared TestLib.c -o TestLib.so</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/usr/bin/python</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> ctypes</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">        TestLib = ctypes.cdll.LoadLibrary(<span class="string">'/home/wjw/misc/cpp_static_dynamic_lib/TestLib.so'</span>)</span><br><span class="line">        print(TestLib.SampleAddInt(<span class="number">1</span>, <span class="number">2</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">        main()</span><br></pre></td></tr></table></figure>
-<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a href="https://helloacm.com/how-to-link-static-library-in-cc-using-gcc-compiler/" target="_blank" rel="noopener">How to Link Static Library in C/C++ using GCC Compiler</a><br><a href="https://helloacm.com/how-to-use-the-dynamic-link-library-in-c-linux-gcc-compiler/" target="_blank" rel="noopener">How to Use the Dynamic Link Library in C++ Linux (gcc compiler)</a><br><a href="https://helloacm.com/calling-c-shared-library-from-python-code-linux-version/" target="_blank" rel="noopener">Calling C++ Shared Library from Python Code (Linux Version)</a></p>
+        <p>An introduction to C++ type casting.</p>
+<a id="more"></a>
+<p>(Declare: all code snippets in this post come from <a href="http://www.cplusplus.com/doc/tutorial/typecasting/" target="_blank" rel="noopener">this</a>)</p>
+<h2 id="Type-Casting"><a href="#Type-Casting" class="headerlink" title="Type Casting"></a>Type Casting</h2><p>Unrestricted explit type-casting allows to convert any pointer into any other<br>pointer type, independently of the types they point to. Which may make either<br>run-time error or unexpected behaviors.</p>
+<p>In order to control type conversions between classes, We have four specific<br>casting operators: <code>dynamic_cast</code>, <code>static_cast</code>, <code>reinterpret_cast</code> and<br><code>const_cast</code>. Their format is like <code>dynamic_cast&lt;new_type&gt;(expression)</code>.</p>
+<h3 id="dynamic-cast"><a href="#dynamic-cast" class="headerlink" title="dynamic_cast"></a>dynamic_cast</h3><p><code>dynamic_cast</code> performs run time check.</p>
+<p>“<code>dynamic_cast</code> can only be used with pointers and references to classes<br>(or with void*). Its purpose is to ensure that the result of the type conversion<br>points to a valid complete object of the destination pointer type.”</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// dynamic_cast</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;exception&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Base</span> &#123;</span></span><br><span class="line">  <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">dummy</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Derived</span>:</span> <span class="keyword">public</span> Base &#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    Base* pba = <span class="keyword">new</span> Derived;</span><br><span class="line">    Base* pbb = <span class="keyword">new</span> Base;</span><br><span class="line">    Derived* pd;</span><br><span class="line"></span><br><span class="line">    pd = <span class="keyword">dynamic_cast</span>&lt;Derived*&gt;(pba);  <span class="comment">// downcast</span></span><br><span class="line">    <span class="keyword">if</span> (pd == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Null pointer on first type-cast.\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    pd = <span class="keyword">dynamic_cast</span>&lt;Derived*&gt;(pbb);  <span class="comment">// downcast</span></span><br><span class="line">    <span class="keyword">if</span> (pd == <span class="number">0</span>) &#123;</span><br><span class="line">      <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Null pointer on second type-cast.\n"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (exception&amp; e) &#123;</span><br><span class="line">    <span class="built_in">std</span>::<span class="built_in">cout</span> &lt;&lt; <span class="string">"Exception: "</span> &lt;&lt; e.what();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Only the first one is successful, because after type casting the first one is<br>pointing to a full object of class <em>Derived</em>, meanwhile, the second one is<br>pointing to an object of class <em>Base</em>, which is incompleted against <em>Derived</em>.</p>
+<p>“When <code>dynamic_cast</code> cannot cast a pointer because it is not a complete object<br>of the required class, it returns a <em>null pointer</em> to indicate the failure. If<br><code>dynamic_cast</code> is used to convert to a reference type and the conversion is not<br>possible, an exception of type <em>bad_cast</em> is thrown instead.</p>
+<p><code>dynamic_cast</code> can also perform the other <em>implict casts</em> allowed on pointers.<br>“</p>
+<h3 id="static-cast"><a href="#static-cast" class="headerlink" title="static_cast"></a>static_cast</h3><p><code>static_cast</code> performs compile time check.</p>
+<p>“<code>static_cast</code> can perform conversions between pointers to related classes, not<br>only <em>upcasts</em> (from pointer-to-derived to pointer-to-base),but also downcasts.<br>No checks are performed during runtime to guarantee that the object being<br>converted is in fact a full object of the destination type. Therefore, it is up<br>to the programmer to ensure that the conversion is safe. On the other side, it<br>does not incur the overhead of the type-safety checks of <code>dynamic_cast</code>.”</p>
+<h3 id="reinterpret-cast"><a href="#reinterpret-cast" class="headerlink" title="reinterpret_cast"></a>reinterpret_cast</h3><h3 id="const-cast"><a href="#const-cast" class="headerlink" title="const_cast"></a>const_cast</h3><p>Remove or add <em>const</em>.</p>
+<h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><p><a href="http://www.cplusplus.com/doc/tutorial/typecasting/" target="_blank" rel="noopener">Type conversions</a></p>
+<p><a href="https://www.youtube.com/watch?v=pWZS1MtxI-A&amp;list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb&amp;index=69" target="_blank" rel="noopener">Casting in C++</a></p>
 
       </div>
         
           <section class="meta" id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2020-01-28T15:12:07+08:00" content="2020-01-28"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2020-01-28
+              <time class="metatag time" itemprop="dateUpdated" datetime="2020-02-02T21:16:21+08:00" content="2020-02-02"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2020-02-02
               </time>
             
             
                 
-                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div> <div class="metatag tags"><a class="tag" href="/tags/linker/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;linker</a></div>
+                <div class="metatag tags"><a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;C++</a></div>
             
             
               
@@ -246,7 +240,7 @@
     <div class="-mob-share-list share-body">
       
         
-          <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wjwrobot.github.io/2020/01/28/Link-Static-Dynamic-Library-in-C-C-on-Linux/&title=Link Static/Dynamic Library in C/C++ on Linux | faust's blog&summary=Note about link library in C/C++.">
+          <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wjwrobot.github.io/2020/02/02/C-Type-Casting/&title=C++ Type Casting | faust's blog&summary=An introduction to C++ type casting.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
             
@@ -254,7 +248,7 @@
         
       
         
-          <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wjwrobot.github.io/2020/01/28/Link-Static-Dynamic-Library-in-C-C-on-Linux/&title=Link Static/Dynamic Library in C/C++ on Linux | faust's blog&summary=Note about link library in C/C++.">
+          <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wjwrobot.github.io/2020/02/02/C-Type-Casting/&title=C++ Type Casting | faust's blog&summary=An introduction to C++ type casting.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
             
@@ -262,7 +256,7 @@
         
       
         
-          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJElEQVR42u3ay24jMQwEQP//TyfXBTZ2uqkx4GFqTkYeskoG0iGpxyN+vv55kq/8/yRrPlsn2dvjHQ82Njb2TdjJdmdbTI7m9R6e8dp1fjgabGxs7HXs18GQL508yVG2UZdbsLGxsbHbMMthSZi9Xh8bGxsbO2HnLZ68CZWT8p/HxsbG/mvsJDbqpUflRPIuszIJGxsbeyv7PJY+5/Vb5tvY2NjYH8yetfWvOppkJ+04OVJgY2NjL2LnAdAWALMGU/u+J/vHxsbG3sTOYykJnjxykgjMS47ZcWBjY2PfnZ2PBGadmfMyIy97iquZ2NjY2KvZ145LT4a4JwH2y2tsbGzspey2QTNr/SQHnTeDhh8PNjY29lJ226CfFQ/5ALg9grxEwcbGxt7Hns0Q8gHACSkPvHwUjY2Njb2PXVxYHBUnJ8GTlyvJOtjY2Nhb2e3otI2l2XWcdkhQ/Aw2Njb2avascX9Vq6gtNoYjDWxsbOw/wM6jog2VnD0b60Yhio2Njb2Ifd4SOr/u0xYnJ1eFLuuEYWNjY38YexY2+THl5UpbkETDgNcfCTY2NvbN2XkktM2j86+3xUl+2QgbGxt7H/uqwuP8gGZtrDp6sbGxsRex87/weduoLQyuGja0r7GxsbG3sk/aRvlG2xWSdYa9NGxsbOybs9thavv2bWMr38/JMBgbGxt7E7uNn1m7593rtB8JNjY29iZ2/k98/t12ljq7oJNE7NPvYmNjYy9iz265tK2oNsxm4+F8CI2NjY29lX102SWGzRr6+d6S38LGxsbex55RZ6Fy3mCaDaSL2Qg2Njb2bdmzazonF3dmBc9J8XPZ7SRsbGzsj2Rf245PVp7x6n7Ys9/CxsbGXsH+Kp/2aGbj21lwFgeEjY2NvYg9G/S+jqjZ//z55Z48MvMdYmNjY9+dPRu7nowKcsYs8OrLOtjY2Ngr2EnwnLTyW1heiiSNJGxsbGzs/HpN3taPLtbEV3nyxhM2NjY29qyQaPFJe+ukHYaNjY29jz0b7s7GvclgYPZebxkPYGNjY388O4+BWZzkUZf/Vl7qzGIPGxsb+ybsbwB6ShVUuBX2AAAAAElFTkSuQmCC">
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpElEQVR42u3aMXbCQAwFQO5/adKmwOZLWiUuxhWPAPZssVK+9vWKr/ftdfXJ3+9UXyf3Onbh4eHhLTz6/TtXyPs73t89WbJoCfDw8PDWeMlD3H9rsqHnS5k/Mx4eHt7TePfloUfqteZ4eHh4z+dVm+mkhOTlAQ8PD+85vCSM6LW8ydJM2u5jWQseHh7ewhTpOa9X5nt4eHh446l6suFWw9x8zFYden34Fh4eHt4Cr9rOTmKL3ubea7vx8PDw9njVsVY1/O0VjGrkcRkc4+Hh4S3w8u27N4g6WySSSPeVPwoeHh7egFcd5/ea7LzYzOMPPDw8vG1ePnTvRRKjDb11sAAPDw9vj7d9HOpvmvIv8z08PDy8o7x5kTjFnscW5UgCDw8Pb3xoYBI6nApnk/AiWSA8PDy8PV71Q/mYP1+CarybN+V4eHh4/8VrztOKj9UrUQUwHh4e3iFegplHqL0AYl6Q8PDw8PZ4kza6uih54NtDfohx8fDw8I7y8oFWjqwOq/Il7hUwPDw8vA1efkCqN/rKW+G8QS9XPzw8PLxDvHdwTQZm+bhrUiSiZBoPDw/vEC/56Xd8VRvo3i+XB3J4eHh4R3nJ2GljZFXd7vOmHw8PD2+blwe4yQ/l1GqTnR+6irIWPDw8vEO86vY9CWHzMHdyLzw8PLxtXh7XJpt7frwg/2s1FMbDw8Pb5lXDhXJrO8Y0j2Th4eHhHeX1BlHVInFg/N9aODw8PLwNXn7lZaP6cMnylYde1QsPDw+vyKsWg3m02jsKUD2MhYeHh7fN6x0ayIde1WNY1aJ1WaLw8PDwHsDbO5hVbdCjp8XDw8N7DK8aDewdF/hydzw8PLw1XvK13kCrdyghac2ju+Dh4eEt8A78wz8Y9udjs2MHBfDw8PD6vB/aIjXKdWL7nQAAAABJRU5ErkJggg==">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
           
@@ -270,7 +264,7 @@
         
       
         
-          <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=https://wjwrobot.github.io/2020/01/28/Link-Static-Dynamic-Library-in-C-C-on-Linux/&title=Link Static/Dynamic Library in C/C++ on Linux | faust's blog&summary=Note about link library in C/C++.">
+          <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=https://wjwrobot.github.io/2020/02/02/C-Type-Casting/&title=C++ Type Casting | faust's blog&summary=An introduction to C++ type casting.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
             
@@ -278,7 +272,7 @@
         
       
         
-          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADJElEQVR42u3ay24jMQwEQP//TyfXBTZ2uqkx4GFqTkYeskoG0iGpxyN+vv55kq/8/yRrPlsn2dvjHQ82Njb2TdjJdmdbTI7m9R6e8dp1fjgabGxs7HXs18GQL508yVG2UZdbsLGxsbHbMMthSZi9Xh8bGxsbO2HnLZ68CZWT8p/HxsbG/mvsJDbqpUflRPIuszIJGxsbeyv7PJY+5/Vb5tvY2NjYH8yetfWvOppkJ+04OVJgY2NjL2LnAdAWALMGU/u+J/vHxsbG3sTOYykJnjxykgjMS47ZcWBjY2PfnZ2PBGadmfMyIy97iquZ2NjY2KvZ145LT4a4JwH2y2tsbGzspey2QTNr/SQHnTeDhh8PNjY29lJ226CfFQ/5ALg9grxEwcbGxt7Hns0Q8gHACSkPvHwUjY2Njb2PXVxYHBUnJ8GTlyvJOtjY2Nhb2e3otI2l2XWcdkhQ/Aw2Njb2avascX9Vq6gtNoYjDWxsbOw/wM6jog2VnD0b60Yhio2Njb2Ifd4SOr/u0xYnJ1eFLuuEYWNjY38YexY2+THl5UpbkETDgNcfCTY2NvbN2XkktM2j86+3xUl+2QgbGxt7H/uqwuP8gGZtrDp6sbGxsRex87/weduoLQyuGja0r7GxsbG3sk/aRvlG2xWSdYa9NGxsbOybs9thavv2bWMr38/JMBgbGxt7E7uNn1m7593rtB8JNjY29iZ2/k98/t12ljq7oJNE7NPvYmNjYy9iz265tK2oNsxm4+F8CI2NjY29lX102SWGzRr6+d6S38LGxsbex55RZ6Fy3mCaDaSL2Qg2Njb2bdmzazonF3dmBc9J8XPZ7SRsbGzsj2Rf245PVp7x6n7Ys9/CxsbGXsH+Kp/2aGbj21lwFgeEjY2NvYg9G/S+jqjZ//z55Z48MvMdYmNjY9+dPRu7nowKcsYs8OrLOtjY2Ngr2EnwnLTyW1heiiSNJGxsbGzs/HpN3taPLtbEV3nyxhM2NjY29qyQaPFJe+ukHYaNjY29jz0b7s7GvclgYPZebxkPYGNjY388O4+BWZzkUZf/Vl7qzGIPGxsb+ybsbwB6ShVUuBX2AAAAAElFTkSuQmCC">
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpElEQVR42u3aMXbCQAwFQO5/adKmwOZLWiUuxhWPAPZssVK+9vWKr/ftdfXJ3+9UXyf3Onbh4eHhLTz6/TtXyPs73t89WbJoCfDw8PDWeMlD3H9rsqHnS5k/Mx4eHt7TePfloUfqteZ4eHh4z+dVm+mkhOTlAQ8PD+85vCSM6LW8ydJM2u5jWQseHh7ewhTpOa9X5nt4eHh446l6suFWw9x8zFYden34Fh4eHt4Cr9rOTmKL3ubea7vx8PDw9njVsVY1/O0VjGrkcRkc4+Hh4S3w8u27N4g6WySSSPeVPwoeHh7egFcd5/ea7LzYzOMPPDw8vG1ePnTvRRKjDb11sAAPDw9vj7d9HOpvmvIv8z08PDy8o7x5kTjFnscW5UgCDw8Pb3xoYBI6nApnk/AiWSA8PDy8PV71Q/mYP1+CarybN+V4eHh4/8VrztOKj9UrUQUwHh4e3iFegplHqL0AYl6Q8PDw8PZ4kza6uih54NtDfohx8fDw8I7y8oFWjqwOq/Il7hUwPDw8vA1efkCqN/rKW+G8QS9XPzw8PLxDvHdwTQZm+bhrUiSiZBoPDw/vEC/56Xd8VRvo3i+XB3J4eHh4R3nJ2GljZFXd7vOmHw8PD2+blwe4yQ/l1GqTnR+6irIWPDw8vEO86vY9CWHzMHdyLzw8PLxtXh7XJpt7frwg/2s1FMbDw8Pb5lXDhXJrO8Y0j2Th4eHhHeX1BlHVInFg/N9aODw8PLwNXn7lZaP6cMnylYde1QsPDw+vyKsWg3m02jsKUD2MhYeHh7fN6x0ayIde1WNY1aJ1WaLw8PDwHsDbO5hVbdCjp8XDw8N7DK8aDewdF/hydzw8PLw1XvK13kCrdyghac2ju+Dh4eEt8A78wz8Y9udjs2MHBfDw8PD6vB/aIjXKdWL7nQAAAABJRU5ErkJggg==">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png">
           
@@ -300,16 +294,16 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
-                                <a href="/2020/02/02/C-Type-Casting/" rel="prev" title="C++ Type Casting">
+                                <a href="/2020/02/03/PyTorch-Basic/" rel="prev" title="PyTorch Basic">
                                   
-                                      C++ Type Casting
+                                      PyTorch Basic
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a>
+                                    <a class="tag" href="/tags/PyTorch/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>PyTorch</a>
                                 </h6>
                             
                         </span>
@@ -320,16 +314,16 @@
                         <span class="art-item-right" aria-hidden="true">
                             <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
                             <h4>
-                                <a href="/2020/01/27/Build-A-Speech-Assistant-App-with-Python/" rel="prev" title="Build A Speech Assistant App with Python">
+                                <a href="/2020/01/28/Link-Static-Dynamic-Library-in-C-C-on-Linux/" rel="prev" title="Link Static/Dynamic Library in C/C++ on Linux">
                                     
-                                        Build A Speech Assistant App with Python
+                                        Link Static/Dynamic Library in C/C++ on Linux
                                     
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/Speech-Recognition/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Speech Recognition</a>
+                                    <a class="tag" href="/tags/C/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>C++</a> <a class="tag" href="/tags/linker/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>linker</a>
                                 </h6>
                             
                         </span>
@@ -363,7 +357,7 @@
             
                 <li><a href="https://wjwrobot.github.io/2020/02/03/PyTorch-Basic/">PyTorch Basic</a></li>
             
-                <li><a href="https://wjwrobot.github.io/2020/02/02/C-Type-Casting/">C++ Type Casting</a></li>
+                <li><a href="https://wjwrobot.github.io/2020/01/28/Link-Static-Dynamic-Library-in-C-C-on-Linux/">Link Static/Dynamic Library in C/C++ on Linux</a></li>
             
                 <li><a href="https://wjwrobot.github.io/2020/01/27/Build-A-Speech-Assistant-App-with-Python/">Build A Speech Assistant App with Python</a></li>
             
@@ -394,7 +388,7 @@
 
 <script>
     window.subData = {
-        title: 'Link Static/Dynamic Library in C/C++ on Linux',
+        title: 'C++ Type Casting',
         tools: true
     }
 </script>
@@ -602,7 +596,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Link-Static-Dynamic-Library-in-C-C-using-GCC-Compiler"><span class="toc-text">Link Static/Dynamic Library in C/C++ using GCC Compiler</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Static-Library"><span class="toc-text">Static Library</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dynamic-Link-Library"><span class="toc-text">Dynamic Link Library</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Calling-C-Shared-Library-from-Python-Code"><span class="toc-text">Calling C++ Shared Library from Python Code</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Type-Casting"><span class="toc-text">Type Casting</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dynamic-cast"><span class="toc-text">dynamic_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#static-cast"><span class="toc-text">static_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#reinterpret-cast"><span class="toc-text">reinterpret_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#const-cast"><span class="toc-text">const_cast</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -703,7 +697,7 @@
         <script>
           var disqus_shortname = 'kurisu-makise';
           
-            var disqus_url = 'https://wjwrobot.github.io/2020/01/28/Link-Static-Dynamic-Library-in-C-C-on-Linux/';
+            var disqus_url = 'https://wjwrobot.github.io/2020/02/02/C-Type-Casting/';
           
           (function(){
             var dsq = document.createElement('script');
