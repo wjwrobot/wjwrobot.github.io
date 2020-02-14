@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   
-  <title>Hello World | faust&#39;s blog</title>
+  <title>The Solutions for LeetCode Problems | faust&#39;s blog</title>
   
   
 
@@ -169,13 +169,13 @@
   <div class="meta" id="header-meta">
     
       
-          <h1 class="title">Hello World</h1>
+          <h1 class="title">The Solutions for LeetCode Problems</h1>
       
     
 
     
       <time class="metatag time">
-        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2019-01-18
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2020-02-13
       </time>
     
 
@@ -183,7 +183,7 @@
       
     
     <div class="metatag cats">
-        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;<a class="categories" href="/categories/other/">other</a>
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;<a class="categories" href="/categories/LeetCode/">LeetCode</a>
     </div>
 
 
@@ -204,30 +204,27 @@
 
     <section class="article typo">
       <div class="article-entry" itemprop="articleBody">
-        <p>It is a test post.</p>
+        <p>The solutions for LeetCode problems in C++ and Python.</p>
 <a id="more"></a>
-<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-<h3 id="Video"><a href="#Video" class="headerlink" title="Video"></a>Video</h3><iframe width="560" height="315" src="https://www.youtube.com/embed/A3UyEWqO0wY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<h2 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h2><h3 id="No-21-Merge-Two-Sorted-Lists"><a href="#No-21-Merge-Two-Sorted-Lists" class="headerlink" title="No.21 Merge Two Sorted Lists"></a>No.21 Merge Two Sorted Lists</h3><p>“Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.”</p>
+<p>Time Complexity: O(m+n)</p>
+<p>Space Complexity: O(1)<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode *next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) : val(x), next(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">mergeTwoLists</span><span class="params">(ListNode *l1, ListNode *l2)</span> </span>&#123;</span><br><span class="line">        ListNode *dummy = <span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">        ListNode *tail = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (l1 &amp;&amp; l2) &#123;</span><br><span class="line">            <span class="keyword">if</span> (l1-&gt;val &lt; l2-&gt;val) &#123;</span><br><span class="line">                tail-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                tail-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            tail = tail-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        tail-&gt;next = l1 ? l1 : l2;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> dummy-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">class ListNode:</span><br><span class="line">    def __init__(self, x):</span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -&gt; ListNode:</span><br><span class="line">        tail = dummy = ListNode(None)</span><br><span class="line"></span><br><span class="line">        while l1 and l2:</span><br><span class="line">            if l1.val &lt; l2.val:</span><br><span class="line">                tail.next = l1</span><br><span class="line">                l1 = l1.next</span><br><span class="line">            else:</span><br><span class="line">                tail.next = l2</span><br><span class="line">                l2 = l2.next</span><br><span class="line"></span><br><span class="line">            tail = tail.next</span><br><span class="line"></span><br><span class="line">        tail.next = l1 or l2</span><br><span class="line"></span><br><span class="line">        return dummy.next</span><br></pre></td></tr></table></figure>
+<h3 id="No-83-Remove-Duplicates-from-Sorted-List"><a href="#No-83-Remove-Duplicates-from-Sorted-List" class="headerlink" title="No.83 Remove Duplicates from Sorted List"></a>No.83 Remove Duplicates from Sorted List</h3><p>“Given a sorted linked list, delete all duplicates such that each element appear<br>only once.”</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">ListNode</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> val;</span><br><span class="line">    ListNode *next;</span><br><span class="line">    ListNode(<span class="keyword">int</span> x) : val(x), next(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode *<span class="title">deleteDuplicates</span><span class="params">(ListNode *head)</span> </span>&#123;</span><br><span class="line">        ListNode *curr = head;</span><br><span class="line">        <span class="keyword">while</span> (curr &amp;&amp; cur-&gt;next) &#123;</span><br><span class="line">            <span class="keyword">if</span> (curr-&gt;val == curr-&gt;next-&gt;val) &#123;</span><br><span class="line">                curr-&gt;next = curr-&gt;next-&gt;next;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                curr = curr-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">class ListNode:</span><br><span class="line">    def __init__(self, x):</span><br><span class="line">        self.val = x</span><br><span class="line">        self.next = None</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def deleteDuplicates(self, head: ListNode) -&gt; ListNode:</span><br><span class="line">        curr = head</span><br><span class="line">        while curr and curr.next:</span><br><span class="line">            if curr.val == curr.next.val:</span><br><span class="line">                curr.next = curr.next.next</span><br><span class="line">            else:</span><br><span class="line">                curr = curr.next</span><br><span class="line"></span><br><span class="line">        return head</span><br></pre></td></tr></table></figure>
 
       </div>
         
           <section class="meta" id="footer-meta">
             
-              <time class="metatag time" itemprop="dateUpdated" datetime="2019-01-20T00:00:00+08:00" content="2019-01-20"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
-                &nbsp;2019-01-20
+              <time class="metatag time" itemprop="dateUpdated" datetime="2020-02-14T17:44:36+08:00" content="2020-02-14"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2020-02-14
               </time>
             
             
                 
-                <div class="metatag tags"><a class="tag" href="/tags/test/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;test</a></div>
+                <div class="metatag tags"><a class="tag" href="/tags/Algorithms/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;Algorithms</a></div> <div class="metatag tags"><a class="tag" href="/tags/LeetCode/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;LeetCode</a></div>
             
             
               
@@ -236,7 +233,7 @@
     <div class="-mob-share-list share-body">
       
         
-          <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wjwrobot.github.io/2019/01/18/hello-world/&title=Hello World | faust's blog&summary=It is a test post.">
+          <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wjwrobot.github.io/2020/02/13/The-Solutions-for-LeetCode-Problems/&title=The Solutions for LeetCode Problems | faust's blog&summary=The solutions for LeetCode problems in C++ and Python.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
             
@@ -244,7 +241,7 @@
         
       
         
-          <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wjwrobot.github.io/2019/01/18/hello-world/&title=Hello World | faust's blog&summary=It is a test post.">
+          <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wjwrobot.github.io/2020/02/13/The-Solutions-for-LeetCode-Problems/&title=The Solutions for LeetCode Problems | faust's blog&summary=The solutions for LeetCode problems in C++ and Python.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
             
@@ -252,7 +249,7 @@
         
       
         
-          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHUlEQVR42u3aQW6DQAwF0Nz/0lTqqlUF+rZJVGberKJAgh8Lyx7P6xWv43udff75zd/vz+7J/+22hYGB8VjGcbmuH3Z25zWv+sqil4KBgbEBo/d31atVahIbBgYGRi9RzgtKDAwMjHnCrbaj1QSNgYGB0Wti8xR5HUovNd/Wi2NgYDyQMR8MvO/zR+cbGBgY/5JxFFf1V/lzR1FhYGAszchLt+vHJ+1otbmtbsBhYGCsypgkx8mQMg86KhYxMDC2YVQ36KuwJKAeHgMDY21GHm61iKwWmjdszGFgYGzDeF8Tmyf3XgwYGBhrM5Ktt6Rcm6TgXpGKgYGxD6PaOiZB33tntJGHgYGxKGNSxuUHLJJtuGoLjYGBsQ8jH23mB7nmKbW3VYeBgbEqY9Kg3oXpjSKatS0GBsYDGb1NsUnBd9eooIDBwMDYgJGsecLtNcAYGBg7MHpBTAKqbt4l5SMGBsbajMkhsMKMNC5A87YWAwNjH0Z1oNhrSqsDhuqhNAwMjB0Y1UKwWtL1EndhSw4DA2NpRjIyzEOfpOZXvKK0i4GBsRCjlyjzwxN5qq2Wj7+uYmBgLM2YpLl8iz9J370jHRgYGPsweg1nrymtvqDCbzEwMDZg5MPFPCFWSaNhJwYGBsY4mebDy2bRiYGBgREkyl6jOz+EgYGBsQ8jaWKrw8v8iEbvrFd5voqBgfFYxqSBnB+YqLbEIwwGBsbzGF/I/3+tk8a8GAAAAABJRU5ErkJggg==">
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3a0U4DMQwEwP7/T5dXpMJ110nKIc09IWhTT5AS1/bjET/P4Pn+ytf3Xq95/SnX62x48PDw8LaGnnzw68fPSMl785jx8PDwTvOS5a43pQ03Ocln24eHh4d3N14eev7XJBHHw8PD+7+8XeWJlWIEHh4e3h147dL5x8/W/4NaCx4eHl7MywsE9/n5SH8PDw8Pb9NAQH7g5uXXtj02jBYPDw/vAC8/cPPBgtlAVVu2KLYYDw8P7+O8JNC2TZUPGcwKEHh4eHjneLMDNwfnw1grIwhR6wsPDw9vEy8PYr0Y0V4nScGi6O/h4eHhbeW1jHYMK79sZlFFMePh4eFt4uUpcnugr4xYzYrFUX8PDw8P7wAvOabb5HulhJGXLd7UWvDw8PC28lpGm9rmW7aemv/QAMPDw8M7xksO6LZZ1TbD8mGsZIPw8PDwTvDyIPJQ8qulbWUNk3I8PDy8Y7w2jW5T5PaqmPWziowbDw8P7wBvdsSvtP9n60QzZXh4eHibeEtf8pdLt7MSbfEPwMPDwzvGa4/jWctqpTwxHETAw8PDO8ZL8s9Zm2o2mJXH8+aKwsPDwzvAWw+lvQCSA329FFJUXPDw8PBKXtR6LwOdbc2sdPvmesPDw8M7wGsbYHko+Qr5avmlEg1d4eHh4S3zdjX7W1jOGBYj8PDw8D7CW29ctTltcvTn7Tc8PDy8z/Dya2C9JZYPCmx48PDw8LbynuUzK7PmWe4siY8KuHh4eHibeKcvj+troAUXTS88PDy8w7xZIbW9PNpUe9cG4eHh4Z3j5Yfy7LaZtbXylX/9DR4eHt4teSsF2fzoH24uHh4e3g14eWrbjh2sbOW2lBoPDw8v5uXDT+2YaT6S1b4+uk7w8PDwDvBWvvC3yHwUIME8dj14eHh4Ke8LGprkKfICNoEAAAAASUVORK5CYII=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
           
@@ -260,7 +257,7 @@
         
       
         
-          <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=https://wjwrobot.github.io/2019/01/18/hello-world/&title=Hello World | faust's blog&summary=It is a test post.">
+          <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=https://wjwrobot.github.io/2020/02/13/The-Solutions-for-LeetCode-Problems/&title=The Solutions for LeetCode Problems | faust's blog&summary=The solutions for LeetCode problems in C++ and Python.">
             
               <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
             
@@ -268,7 +265,7 @@
         
       
         
-          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACHUlEQVR42u3aQW6DQAwF0Nz/0lTqqlUF+rZJVGberKJAgh8Lyx7P6xWv43udff75zd/vz+7J/+22hYGB8VjGcbmuH3Z25zWv+sqil4KBgbEBo/d31atVahIbBgYGRi9RzgtKDAwMjHnCrbaj1QSNgYGB0Wti8xR5HUovNd/Wi2NgYDyQMR8MvO/zR+cbGBgY/5JxFFf1V/lzR1FhYGAszchLt+vHJ+1otbmtbsBhYGCsypgkx8mQMg86KhYxMDC2YVQ36KuwJKAeHgMDY21GHm61iKwWmjdszGFgYGzDeF8Tmyf3XgwYGBhrM5Ktt6Rcm6TgXpGKgYGxD6PaOiZB33tntJGHgYGxKGNSxuUHLJJtuGoLjYGBsQ8jH23mB7nmKbW3VYeBgbEqY9Kg3oXpjSKatS0GBsYDGb1NsUnBd9eooIDBwMDYgJGsecLtNcAYGBg7MHpBTAKqbt4l5SMGBsbajMkhsMKMNC5A87YWAwNjH0Z1oNhrSqsDhuqhNAwMjB0Y1UKwWtL1EndhSw4DA2NpRjIyzEOfpOZXvKK0i4GBsRCjlyjzwxN5qq2Wj7+uYmBgLM2YpLl8iz9J370jHRgYGPsweg1nrymtvqDCbzEwMDZg5MPFPCFWSaNhJwYGBsY4mebDy2bRiYGBgREkyl6jOz+EgYGBsQ8jaWKrw8v8iEbvrFd5voqBgfFYxqSBnB+YqLbEIwwGBsbzGF/I/3+tk8a8GAAAAABJRU5ErkJggg==">
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3a0U4DMQwEwP7/T5dXpMJ110nKIc09IWhTT5AS1/bjET/P4Pn+ytf3Xq95/SnX62x48PDw8LaGnnzw68fPSMl785jx8PDwTvOS5a43pQ03Ocln24eHh4d3N14eev7XJBHHw8PD+7+8XeWJlWIEHh4e3h147dL5x8/W/4NaCx4eHl7MywsE9/n5SH8PDw8Pb9NAQH7g5uXXtj02jBYPDw/vAC8/cPPBgtlAVVu2KLYYDw8P7+O8JNC2TZUPGcwKEHh4eHjneLMDNwfnw1grIwhR6wsPDw9vEy8PYr0Y0V4nScGi6O/h4eHhbeW1jHYMK79sZlFFMePh4eFt4uUpcnugr4xYzYrFUX8PDw8P7wAvOabb5HulhJGXLd7UWvDw8PC28lpGm9rmW7aemv/QAMPDw8M7xksO6LZZ1TbD8mGsZIPw8PDwTvDyIPJQ8qulbWUNk3I8PDy8Y7w2jW5T5PaqmPWziowbDw8P7wBvdsSvtP9n60QzZXh4eHibeEtf8pdLt7MSbfEPwMPDwzvGa4/jWctqpTwxHETAw8PDO8ZL8s9Zm2o2mJXH8+aKwsPDwzvAWw+lvQCSA329FFJUXPDw8PBKXtR6LwOdbc2sdPvmesPDw8M7wGsbYHko+Qr5avmlEg1d4eHh4S3zdjX7W1jOGBYj8PDw8D7CW29ctTltcvTn7Tc8PDy8z/Dya2C9JZYPCmx48PDw8LbynuUzK7PmWe4siY8KuHh4eHibeKcvj+troAUXTS88PDy8w7xZIbW9PNpUe9cG4eHh4Z3j5Yfy7LaZtbXylX/9DR4eHt4teSsF2fzoH24uHh4e3g14eWrbjh2sbOW2lBoPDw8v5uXDT+2YaT6S1b4+uk7w8PDwDvBWvvC3yHwUIME8dj14eHh4Ke8LGprkKfICNoEAAAAASUVORK5CYII=">
           
             <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png">
           
@@ -290,21 +287,40 @@
                         <span class="art-item-left">
                             <h6><i class="fas fa-chevron-left" aria-hidden="true"></i>&nbsp;Previous</h6>
                             <h4>
-                                <a href="/2019/01/18/My-New-Post/" rel="prev" title="My New Post">
+                                <a href="/2020/02/13/Ensemble-Learning-and-Random-Forests/" rel="prev" title="Ensemble Learning and Random Forests">
                                   
-                                      My New Post
+                                      Ensemble Learning and Random Forests
                                   
                                 </a>
                             </h4>
                             
                                 
                                 <h6 class="tags">
-                                    <a class="tag" href="/tags/test/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>test</a>
+                                    <a class="tag" href="/tags/Machine-Learning/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Machine Learning</a> <a class="tag" href="/tags/Ensemble-Learning/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Ensemble Learning</a> <a class="tag" href="/tags/Random-Forest/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Random Forest</a>
                                 </h6>
                             
                         </span>
                     </section>
                 
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2020/02/09/An-Introduction-to-Rust/" rel="prev" title="An Introduction to Rust">
+                                    
+                                        An Introduction to Rust
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/Rust/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Rust</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
                 
             </div>
         
@@ -332,13 +348,13 @@
         <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;Related Posts</h4>
         <ul>
             
-                <li><a href="https://wjwrobot.github.io/2019/05/05/Install-and-Configure-Arch-Linux/">Install and Configure Arch Linux</a></li>
+                <li><a href="https://wjwrobot.github.io/2020/02/13/Ensemble-Learning-and-Random-Forests/">Ensemble Learning and Random Forests</a></li>
             
-                <li><a href="https://wjwrobot.github.io/2019/01/23/Enable-Colaboratory-use-local-runtime/">Enable Colaboratory to Use Local Runtime</a></li>
+                <li><a href="https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust/">An Introduction to Rust</a></li>
             
-                <li><a href="https://wjwrobot.github.io/2019/01/20/build_site_with_github/">Building Personal Website with Github</a></li>
+                <li><a href="https://wjwrobot.github.io/2020/02/03/PyTorch-Basic/">PyTorch Basic</a></li>
             
-                <li><a href="https://wjwrobot.github.io/2019/01/18/My-New-Post/">My New Post</a></li>
+                <li><a href="https://wjwrobot.github.io/2020/02/02/C-Type-Casting/">C++ Type Casting</a></li>
             
         </ul>
     </div>
@@ -365,7 +381,7 @@
 
 <script>
     window.subData = {
-        title: 'Hello World',
+        title: 'The Solutions for LeetCode Problems',
         tools: true
     }
 </script>
@@ -577,7 +593,7 @@
 </header>
 
     <div class="content pure">
-      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-text">Deploy to remote sites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Video"><span class="toc-text">Video</span></a></li></ol></li></ol>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#LinkedList"><span class="toc-text">LinkedList</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#No-21-Merge-Two-Sorted-Lists"><span class="toc-text">No.21 Merge Two Sorted Lists</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#No-83-Remove-Duplicates-from-Sorted-List"><span class="toc-text">No.83 Remove Duplicates from Sorted List</span></a></li></ol></li></ol>
     </div>
   </section>
 
@@ -678,7 +694,7 @@
         <script>
           var disqus_shortname = 'kurisu-makise';
           
-            var disqus_url = 'https://wjwrobot.github.io/2019/01/18/hello-world/';
+            var disqus_url = 'https://wjwrobot.github.io/2020/02/13/The-Solutions-for-LeetCode-Problems/';
           
           (function(){
             var dsq = document.createElement('script');

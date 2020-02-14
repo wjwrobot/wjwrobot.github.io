@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://wjwrobot.github.io/2020/02/13/The-Solutions-for-LeetCode-Problems/</loc>
+    
+    <lastmod>2020-02-14T09:44:36.457Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2020/02/13/Ensemble-Learning-and-Random-Forests/</loc>
+    
+    <lastmod>2020-02-13T13:03:55.143Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust/</loc>
     
     <lastmod>2020-02-11T04:54:49.154Z</lastmod>
