@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust/</loc>
+    <lastmod>2020-02-20</lastmod>
+  </url>  <url>
+    <loc>https://wjwrobot.github.io/2019/05/05/Install-and-Configure-Arch-Linux/</loc>
+    <lastmod>2020-02-16</lastmod>
+  </url>  <url>
     <loc>https://wjwrobot.github.io/2020/02/13/The-Solutions-for-LeetCode-Problems/</loc>
     <lastmod>2020-02-14</lastmod>
   </url>  <url>
     <loc>https://wjwrobot.github.io/2020/02/13/Ensemble-Learning-and-Random-Forests/</loc>
     <lastmod>2020-02-13</lastmod>
-  </url>  <url>
-    <loc>https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust/</loc>
-    <lastmod>2020-02-11</lastmod>
   </url>  <url>
     <loc>https://wjwrobot.github.io/2020/01/27/JavaScript-Crash-Course/</loc>
     <lastmod>2020-02-09</lastmod>
@@ -33,9 +36,6 @@
   </url>  <url>
     <loc>https://wjwrobot.github.io/2020/01/24/Machine-Learning-Series-1-Decision-Trees/</loc>
     <lastmod>2020-01-26</lastmod>
-  </url>  <url>
-    <loc>https://wjwrobot.github.io/2019/05/05/Install-and-Configure-Arch-Linux/</loc>
-    <lastmod>2020-01-24</lastmod>
   </url>  <url>
     <loc>https://wjwrobot.github.io/2019/01/20/build_site_with_github/</loc>
     <lastmod>2019-05-05</lastmod>
