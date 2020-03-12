@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <title>An Introduction to Rust -- Part 2 | faust&#39;s blog</title>
+  
+  
+
+  <link rel="alternate" href="/atom.xml" title="faust's blog">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!-- meta -->
+  
+  
+  <meta name="theme-color" content="#f24e32">
+  
+  <meta name="msapplication-TileColor" content="#f24e32">
+  
+  <meta name="msapplication-config" content="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/browserconfig.xml">
+  
+  
+  <!-- link -->
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.css">
+  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.6.3/css/all.min.css">
+
+  
+  
+  <link rel="shortcut icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicon.ico" type="image/x-icon">
+  
+  <link rel="icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/favicon-32x32.png" type="image/x-icon" sizes="32x32">
+  
+  <link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/apple-touch-icon.png" type="image/png" sizes="180x180">
+  
+  <link rel="mask-icon" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/safari-pinned-tab.svg" color="#f24e32">
+  
+  <link rel="manifest" href="https://cdn.jsdelivr.net/gh/xaoxuu/assets@18.12.27/favicon/favicons/site.webmanifest">
+  
+  
+
+  
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.1.18/css/style.css">
+    
+  
+
+  
+
+
+
+  <script>
+    function setLoadingBarProgress(num) {
+      document.getElementById('loading-bar').style.width=num+"%";
+    }
+  </script>
+
+  
+  
+</head>
+
+<body>
+    <div id="loading-bar-wrapper">
+  <div id="loading-bar" class="pure"></div>
+</div>
+
+    <script>setLoadingBarProgress(20)</script>
+    <header class="l_header pure">
+	<div class="wrapper">
+		<div class="nav-main container container--flex">
+      <a class="logo flat-box" href="/">
+        
+          faust's blog
+        
+      </a>
+			<div class="menu">
+				<ul class="h-list">
+          
+  					
+  						<li>
+								<a id="home" class="nav flat-box" href="/">
+									<i class="fas fa-home fa-fw"></i>&nbsp;Home
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="archives" class="nav flat-box" href="/archives/">
+									<i class="fas fa-archive fa-fw"></i>&nbsp;Archives
+								</a>
+							</li>
+      			
+  						<li>
+								<a id="about" class="nav flat-box" href="/about/">
+									<i class="fas fa-user fa-fw"></i>&nbsp;About
+								</a>
+							</li>
+      			
+      		
+				</ul>
+			</div>
+
+			
+				<div class="m_search">
+					<form name="searchform" class="form u-search-form">
+						<input type="text" class="input u-search-input" placeholder="Search">
+						<span class="icon"><i class="fas fa-search fa-fw"></i></span>
+					</form>
+				</div>
+			
+			<ul class="switcher h-list">
+				
+					<li class="s-search"><a class="fas fa-search fa-fw" href="javascript:void(0)"></a></li>
+				
+				<li class="s-menu"><a class="fas fa-bars fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+
+		<div class="nav-sub container container--flex">
+			<a class="logo flat-box"></a>
+			<ul class="switcher h-list">
+				<li class="s-comment"><a class="flat-btn fas fa-comments fa-fw" href="javascript:void(0)"></a></li>
+				<li class="s-toc"><a class="flat-btn fas fa-list fa-fw" href="javascript:void(0)"></a></li>
+			</ul>
+		</div>
+	</div>
+</header>
+	<aside class="menu-phone">
+    <header>
+		<nav class="menu">
+      <ul>
+          
+              
+                  <li>
+										<a id="home" class="nav flat-box" href="/">
+											<i class="fas fa-home fa-fw"></i>&nbsp;Home
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="archives" class="nav flat-box" href="/archives/">
+											<i class="fas fa-archive fa-fw"></i>&nbsp;Archives
+										</a>
+                  </li>
+              
+                  <li>
+										<a id="about" class="nav flat-box" href="/about/">
+											<i class="fas fa-user fa-fw"></i>&nbsp;About
+										</a>
+                  </li>
+              
+       
+      </ul>
+		</nav>
+    </header>
+	</aside>
+
+    <script>setLoadingBarProgress(40);</script>
+    <div class="l_body">
+    <div class='container clearfix'>
+        <div class='l_main'>
+            <article id="post" class="post white-box article-type-post" itemscope="" itemprop="blogPost">
+  
+<section class="meta">
+  
+  <div class="meta" id="header-meta">
+    
+      
+          <h1 class="title">An Introduction to Rust -- Part 2</h1>
+      
+    
+
+    
+      <time class="metatag time">
+        <i class="fas fa-calendar-alt fa-fw" aria-hidden="true"></i>&nbsp;2020-03-12
+      </time>
+    
+
+    
+      
+    
+    <div class="metatag cats">
+        <i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;<a class="categories" href="/categories/Rust/">Rust</a>
+    </div>
+
+
+    
+
+    
+      
+        <div class="metatag browse busuanzi"><i class="fas fa-eye fa-fw" aria-hidden="true"></i>
+          &nbsp;<span id="busuanzi_value_page_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span>
+        </div>
+      
+    
+
+    
+
+  </div>
+</section>
+
+    <section class="article typo">
+      <div class="article-entry" itemprop="articleBody">
+        <p>An Introduction to the Rust language – part 2.</p>
+<a id="more"></a>
+<p>(Note: All contents in this post comes from the <a href="https://doc.rust-lang.org/book/title-page.html" target="_blank" rel="noopener">Rust Programming Language</a>)</p>
+<h2 id="13-Functional-Language-Features-Iterators-and-Closures"><a href="#13-Functional-Language-Features-Iterators-and-Closures" class="headerlink" title="13. Functional Language Features: Iterators and Closures"></a>13. Functional Language Features: Iterators and Closures</h2><h2 id="16-Fearless-Concurrency"><a href="#16-Fearless-Concurrency" class="headerlink" title="16. Fearless Concurrency"></a>16. Fearless Concurrency</h2><ul>
+<li>How to create threads to run multiple pieces of code at the same time.</li>
+<li><em>Message-passing</em> concurrency, where channels send messages between threads.</li>
+<li><em>Shared-state</em> concurrency, where multiple threads have access to some piece of data.</li>
+<li>The <code>Sync</code> and <code>Send</code> traits, which extend Rust’s concurrency guarantees to<br>user-defined types as well as types provided by the standard library.</li>
+</ul>
+<h3 id="Using-Threads-to-Run-Code-Simultaneously"><a href="#Using-Threads-to-Run-Code-Simultaneously" class="headerlink" title="Using Threads to Run Code Simultaneously"></a>Using Threads to Run Code Simultaneously</h3><h4 id="Create-a-New-Thread-with-spawn"><a href="#Create-a-New-Thread-with-spawn" class="headerlink" title="Create a New Thread with spawn"></a>Create a New Thread with <code>spawn</code></h4><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"><span class="keyword">use</span> std::time::Duration;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    thread::spawn(|| &#123;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span> &#123;</span><br><span class="line">            <span class="built_in">println!</span>(<span class="string">"hi number &#123;&#125; from the spawned thread!"</span>, i);</span><br><span class="line">            thread::sleep(Duration::from_millis(<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">5</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">"hi number &#123;&#125; from the main thread!"</span>, i);</span><br><span class="line">        thread::sleep(Duration::from_millis(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(Note: the new thread will be stopped when the main thread ends, whether or not<br>it has finished running.)</p>
+<h4 id="Waiting-for-All-Threads-to-Finish-Using-join-Handles"><a href="#Waiting-for-All-Threads-to-Finish-Using-join-Handles" class="headerlink" title="Waiting for All Threads to Finish Using join Handles"></a>Waiting for All Threads to Finish Using <code>join</code> Handles</h4><p>The return type of <code>thread::spawn</code> is <code>JoinHandle</code>. A <em>JoinHandle</em> is an owned<br>value that, when we call the <code>join</code> method on it, will wait for its thread to<br>finish.</p>
+<figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"><span class="keyword">use</span> std::time::Duration;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> handle = thread::spawn(|| &#123;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">10</span> &#123;</span><br><span class="line">            <span class="built_in">println!</span>(<span class="string">"hi number &#123;&#125; from the spawned thread!"</span>, i);</span><br><span class="line">            thread::sleep(Duration::from_millis(<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="number">1</span>..<span class="number">5</span> &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">"hi number &#123;&#125; from the main thread!"</span>, i);</span><br><span class="line">        thread::sleep(Duration::from_millis(<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    handle.join().unwrap();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Using-move-closures-with-Threads"><a href="#Using-move-closures-with-Threads" class="headerlink" title="Using move closures with Threads"></a>Using <code>move</code> closures with Threads</h4><p>The <code>move</code> closure is often used alongside <code>thread::spawn</code> because it allows you<br>to use data from one thread in another thread.</p>
+<figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> v = <span class="built_in">vec!</span>[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> handle = thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">"Here's a vector: &#123;:?&#125;"</span>, v);</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    handle.join().unwrap();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Using-Message-Passing-to-Transfer-Data-Between-Threads"><a href="#Using-Message-Passing-to-Transfer-Data-Between-Threads" class="headerlink" title="Using Message Passing to Transfer Data Between Threads"></a>Using Message Passing to Transfer Data Between Threads</h3><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"><span class="keyword">use</span> std::sync::mpsc;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> (tx, rx) = mpsc::channel();</span><br><span class="line"></span><br><span class="line">    thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">        <span class="keyword">let</span> val = <span class="built_in">String</span>::from(<span class="string">"hi"</span>);</span><br><span class="line">        tx.send(val).unwrap();</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> received = rx.recv().unwrap();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"Got: &#123;&#125;"</span>, received);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(<em>recv</em> method will block the main thread’s execution and wait until a value is sent<br>down the channel. Once a value is sent, <em>recv</em> will return it in a <em>Result&lt;T, E&gt;</em>.<br>When the sending end of the channel closes, <em>recv</em> will return an error to signal<br>that no more values will be coming.<br>The <em>try_recv</em> method doesn’t block, but will instead return a <em>Result&lt;T, E&gt;</em><br>immediately: an <em>Ok</em> value holding a message if one is available and an <em>Err</em><br>value if there aren’t any messages this time.)</p>
+<h4 id="Channels-and-Ownership-Transference"><a href="#Channels-and-Ownership-Transference" class="headerlink" title="Channels and Ownership Transference"></a>Channels and Ownership Transference</h4><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"><span class="keyword">use</span> std::sync::mpsc;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> (tx, rx) = mpsc::channel();</span><br><span class="line"></span><br><span class="line">    thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">        <span class="keyword">let</span> val = <span class="built_in">String</span>::from(<span class="string">"hi"</span>);</span><br><span class="line">        tx.send(val).unwrap();</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">"val is &#123;&#125;"</span>, val); <span class="comment">// wrong</span></span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> received = rx.recv().unwrap();</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"Got: &#123;&#125;"</span>, received);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(The send function takes ownership of its parameter, and when the value is moved,<br>the receiver takes ownership of it.)</p>
+<h4 id="Sending-Multiple-Values-and-Seeing-the-Receiver-Waiting"><a href="#Sending-Multiple-Values-and-Seeing-the-Receiver-Waiting" class="headerlink" title="Sending Multiple Values and Seeing the Receiver Waiting"></a>Sending Multiple Values and Seeing the Receiver Waiting</h4><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::sync::mpsc;</span><br><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"><span class="keyword">use</span> std::time::Duration;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> (tx, rx) = mpsc::channel();</span><br><span class="line"></span><br><span class="line">    thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">        <span class="keyword">let</span> vals = <span class="built_in">vec!</span>[</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"hi"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"from"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"the"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"thread"</span>),</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">for</span> val <span class="keyword">in</span> vals &#123;</span><br><span class="line">            tx.send(val).unwrap();</span><br><span class="line">            thread::sleep(Duration::from_secs(<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> received <span class="keyword">in</span> rx &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">"Got: &#123;&#125;"</span>, received);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Create-Multiple-Producers-by-Cloning-the-Transmitter"><a href="#Create-Multiple-Producers-by-Cloning-the-Transmitter" class="headerlink" title="Create Multiple Producers by Cloning the Transmitter"></a>Create Multiple Producers by Cloning the Transmitter</h4><p><em>mpsc</em> is an acronym for <em>multiple producer, single consumer</em>.<br><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::sync::mpsc;</span><br><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"><span class="keyword">use</span> std::time::Duration;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> (tx, rx) = mpsc::channel();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> tx1 = mpsc::Sender::clone(&amp;tx); <span class="comment">// clone the transmitter</span></span><br><span class="line"></span><br><span class="line">    thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">        <span class="keyword">let</span> vals = <span class="built_in">vec!</span>[</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"hi"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"from"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"the"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"thread"</span>),</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">for</span> val <span class="keyword">in</span> vals &#123;</span><br><span class="line">            tx1.send(val).unwrap();</span><br><span class="line">            thread::sleep(Duration::from_secs(<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">        <span class="keyword">let</span> vals = <span class="built_in">vec!</span>[</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"more"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"messages"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"for"</span>),</span><br><span class="line">            <span class="built_in">String</span>::from(<span class="string">"you"</span>),</span><br><span class="line">        ];</span><br><span class="line">        <span class="keyword">for</span> val <span class="keyword">in</span> vals &#123;</span><br><span class="line">            tx.send(val).unwrap();</span><br><span class="line">            thread::sleep(Duration::from_secs(<span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> received <span class="keyword">in</span> rx &#123;</span><br><span class="line">        <span class="built_in">println!</span>(<span class="string">"Got: &#123;&#125;"</span>, received);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Shared-State-Concurrency"><a href="#Shared-State-Concurrency" class="headerlink" title="Shared-State Concurrency"></a>Shared-State Concurrency</h3><h4 id="Using-Mutexes-to-Allow-Access-to-Data-from-One-Thread-at-a-Time"><a href="#Using-Mutexes-to-Allow-Access-to-Data-from-One-Thread-at-a-Time" class="headerlink" title="Using Mutexes to Allow Access to Data from One Thread at a Time"></a>Using Mutexes to Allow Access to Data from One Thread at a Time</h4><p>A <em>Mutex</em> (mutual exclusion) allows only one thread to access some data at any<br>given time. To access the data in a mutex, a thread must first signal that it<br>wants access by asking to acquire the mutex’s <em>lock</em>.</p>
+<h4 id="The-API-of-Mutex-lt-T-gt"><a href="#The-API-of-Mutex-lt-T-gt" class="headerlink" title="The API of Mutex&lt;T&gt;"></a>The API of <code>Mutex&lt;T&gt;</code></h4><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::sync::Mutex;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> m = Mutex::new(<span class="number">5</span>);</span><br><span class="line"></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">let</span> <span class="keyword">mut</span> num = m.lock().unwrap();</span><br><span class="line">        *num = <span class="number">6</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"m = &#123;:?&#125;"</span>, m);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(<code>Mutex&lt;T&gt;</code> is a smart pointer. The call to <em>lock</em> return a smart pointer called<br><code>MutexGuard</code>, wrapped in a <em>LockResult</em> that we handled with the call to <em>unwrap</em>.<br>The <em>MutexGuard</em> smart pointer implements <code>Deref</code> to point at our inner data; the<br>smart pointer also have a <code>Drop</code> implementation that releases the lock automatically<br>when a <em>MutexGuard</em> goes out of scope.)</p>
+<h4 id="Sharing-a-Mutex-lt-T-gt-Between-Multiple-Threads"><a href="#Sharing-a-Mutex-lt-T-gt-Between-Multiple-Threads" class="headerlink" title="Sharing a Mutex&lt;T&gt; Between Multiple Threads"></a>Sharing a <code>Mutex&lt;T&gt;</code> Between Multiple Threads</h4><p>(wrong, see below)<br><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::sync::Mutex;</span><br><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> counter = Mutex::new(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> handles = <span class="built_in">vec!</span>[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> handle = thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="keyword">mut</span> num = counter.lock().unwrap();</span><br><span class="line">            *num += <span class="number">1</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        handles.push(handle);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> handle <span class="keyword">in</span> handles &#123;</span><br><span class="line">        handle.join().unwrap();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"Result: &#123;&#125;"</span>, *counter.lock().unwrap());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Multiple-Ownership-with-Multiple-Threads"><a href="#Multiple-Ownership-with-Multiple-Threads" class="headerlink" title="Multiple Ownership with Multiple Threads"></a>Multiple Ownership with Multiple Threads</h4><p>Wrap the <code>Mutex&lt;T&gt;</code> in <code>Rc&lt;T&gt;</code> and clone the <em>Rc<t></t></em> before moving ownership to<br>the thread.<br>(wrong, see below)<br><figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::rc::Rc;</span><br><span class="line"><span class="keyword">use</span> std::sync::Mutex;</span><br><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> counter = Rc::new(Mutex::new(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> handles = <span class="built_in">vec!</span>[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> counter = Rc::clone(&amp;counter);</span><br><span class="line">        <span class="keyword">let</span> handle = thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="keyword">mut</span> num = counter.lock().unwrap();</span><br><span class="line">            *num += <span class="number">1</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        handles.push(handle);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> handle <span class="keyword">in</span> handles &#123;</span><br><span class="line">        handle.join().unwrap();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"Result: &#123;&#125;"</span>, *counter.lock().unwrap());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="Atomic-Reference-Counting-with-Arc-lt-T-gt"><a href="#Atomic-Reference-Counting-with-Arc-lt-T-gt" class="headerlink" title="Atomic Reference Counting with Arc&lt;T&gt;"></a>Atomic Reference Counting with <code>Arc&lt;T&gt;</code></h4><p><em>Arc<t></t></em> (atomically reference counted) is a type like <em>Rc<t></t></em> that is safe to<br>use in concurrent situations.</p>
+<figure class="highlight rs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">use</span> std::sync::&#123;Arc, Mutex&#125;;</span><br><span class="line"><span class="keyword">use</span> std::thread;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">fn</span> <span class="title">main</span></span>() &#123;</span><br><span class="line">    <span class="keyword">let</span> counter = Arc::new(Mutex::new(<span class="number">0</span>));</span><br><span class="line">    <span class="keyword">let</span> <span class="keyword">mut</span> handles = <span class="built_in">vec!</span>[];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="number">0</span>..<span class="number">10</span> &#123;</span><br><span class="line">        <span class="keyword">let</span> counter = Arc::clone(&amp;counter);</span><br><span class="line">        <span class="keyword">let</span> handle = thread::spawn(<span class="keyword">move</span> || &#123;</span><br><span class="line">            <span class="keyword">let</span> <span class="keyword">mut</span> num = counter.lock().unwrap();</span><br><span class="line">            *num += <span class="number">1</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        handles.push(handle);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> handle <span class="keyword">in</span> handles &#123;</span><br><span class="line">        handle.join().unwrap();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">println!</span>(<span class="string">"Result: &#123;&#125;"</span>, *counter.lock().unwrap());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Similarities-Between-RefCell-lt-T-gt-Rc-lt-T-gt-and-Mutex-lt-T-gt-Arc-lt-T-gt"><a href="#Similarities-Between-RefCell-lt-T-gt-Rc-lt-T-gt-and-Mutex-lt-T-gt-Arc-lt-T-gt" class="headerlink" title="Similarities Between RefCell&lt;T&gt;/Rc&lt;T&gt; and Mutex&lt;T&gt;/Arc&lt;T&gt;"></a>Similarities Between <code>RefCell&lt;T&gt;</code>/<code>Rc&lt;T&gt;</code> and <code>Mutex&lt;T&gt;</code>/<code>Arc&lt;T&gt;</code></h4><p>We can use <em>Mutex<t></t></em>, which provides <em>interior mutability</em>, to mutate contents<br>inside an <em>Arc<t></t></em> just like <em>RefCell<t></t></em> to <em>Rc<t>.</t></em></p>
+<h3 id="Extensible-Concurrency-with-the-Sync-and-Send-Traits"><a href="#Extensible-Concurrency-with-the-Sync-and-Send-Traits" class="headerlink" title="Extensible Concurrency with the Sync and Send Traits"></a>Extensible Concurrency with the <code>Sync</code> and <code>Send</code> Traits</h3><p>Two concurrency concepts are embedded in the language: the <code>std::marker</code> traits<br><code>Sync</code> and <code>Send</code>.</p>
+<h4 id="Allowing-Transference-of-Ownership-Between-Threads-with-Send"><a href="#Allowing-Transference-of-Ownership-Between-Threads-with-Send" class="headerlink" title="Allowing Transference of Ownership Between Threads with Send"></a>Allowing Transference of Ownership Between Threads with <code>Send</code></h4><p>The <code>Send</code> marker trait indicates that ownership of the type implementing <em>Send</em><br>can be transferred bwtween threads. Almost every Rust type is <em>Send</em>, but there<br>are some exceptions, including <code>Rc&lt;T&gt;</code>.</p>
+<p>Any type composed entirely of <em>Send</em> types is automatically marked as <em>Send</em> as well.</p>
+<h4 id="Allowing-Access-from-Multiple-Threads-with-Sync"><a href="#Allowing-Access-from-Multiple-Threads-with-Sync" class="headerlink" title="Allowing Access from Multiple Threads with Sync"></a>Allowing Access from Multiple Threads with <code>Sync</code></h4><p>The <code>Sync</code> marker trait indicates that it is safe for the type implementing <em>Sync</em><br>to be referenced from multiple threads. In other words, any type <em>T</em> is <em>Sync</em> if<br><em>&amp;T</em> is <em>Send</em>. Similar to <em>Send</em>, primitive types are <em>Sync</em>, and types composed<br>entirely of types are <em>Sync</em> are also <em>Sync</em>.</p>
+<p>The <code>RefCell&lt;T&gt;</code> type and the family of related <code>Cell&lt;T&gt;</code> types are not <code>Sync</code>.<br>The <code>Rc&lt;T&gt;</code> is not <em>Sync</em>, but the <code>Mutex&lt;T&gt;</code> is <em>Sync</em>.</p>
+<h4 id="Implementing-Send-and-Sync-Manually-is-Unsafe"><a href="#Implementing-Send-and-Sync-Manually-is-Unsafe" class="headerlink" title="Implementing Send and Sync Manually is Unsafe"></a>Implementing <code>Send</code> and <code>Sync</code> Manually is Unsafe</h4><hr>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://doc.rust-lang.org/book/title-page.html" target="_blank" rel="noopener">The Rust Programming Language</a></p>
+
+      </div>
+        
+          <section class="meta" id="footer-meta">
+            
+              <time class="metatag time" itemprop="dateUpdated" datetime="2020-03-12T22:06:48+08:00" content="2020-03-12"><i class="fas fa-pencil-alt fa-fw" aria-hidden="true"></i>
+                &nbsp;2020-03-12
+              </time>
+            
+            
+                
+                <div class="metatag tags"><a class="tag" href="/tags/Rust/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>&nbsp;Rust</a></div>
+            
+            
+              
+  <div class="metatag share -mob-share-list">
+    <i class="left fas fa-share-alt fa-fw" aria-hidden="true"></i>
+    <div class="-mob-share-list share-body">
+      
+        
+          <a class="-mob-share-qq" title="QQ好友" rel="external nofollow noopener noreferrer" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wjwrobot.github.io/2020/03/12/An-Introduction-to-Rust-2/&title=An Introduction to Rust -- Part 2 | faust's blog&summary=An Introduction to the Rust language – part 2.">
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qq.png">
+            
+          </a>
+        
+      
+        
+          <a class="-mob-share-qzone" title="QQ空间" rel="external nofollow noopener noreferrer" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://wjwrobot.github.io/2020/03/12/An-Introduction-to-Rust-2/&title=An Introduction to Rust -- Part 2 | faust's blog&summary=An Introduction to the Rust language – part 2.">
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qzone.png">
+            
+          </a>
+        
+      
+        
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3awU7DMBAEUP7/p4vECYkSZnZjCtLzqSpt4hckrzvrt7d4PD7G59efx9dPfvd+cs3v7vL1CrcNPDw8vNHUry83u/H1+/ljyvFP7oiHh4d3jJcUg7aEXC/612Um+Vb0QPHw8PBeysuX6ZaalxA8PDy8/8WbFYzrz7RbeTw8PLy/w7vrx/9jNNrI+EjWgoeHhxfzZg2w174+3t/Dw8PDG3XVZ5vdJGLIDxNsZouHh4d3gpdPZdP0ymPf9jBWVDDw8PDwDvM2k2gbWvl18pk8eQcPDw/vVl6yhU2oSVMqmVbxP0m+hYeHh3eMNztEtapFi5S1+AGAh4eHd4DXRgCz8OKuB9eGFHh4eHjneJulf3ZAqt0ob8IRPDw8vNO8NmxN4oY2RGiD4FV3Dg8PD2/B20xxdmBrBsijZzw8PLwTvH2LawaYMdrAAg8PD+8Eb9PCzxtabfnJ5xNdHw8PD+9WXt702jS08sKQt76iR4OHh4d3mNcGuO1xq/ZRtsUDDw8P73d4s/ZSWzzarXNbYIpNOR4eHt6a107ievvbRsCzYlMUFTw8PLwDvHwSeXzQ/nWzaW5bbnh4eHh38fatqXZC7b1mATEeHh7eOV5bQ/KWVV4GZmFHsa3Hw8PDO8BLftjnEcBmkz2LgPHw8PBexZsdC9hEG+2Rr7YxhoeHh3eCtzlWlWxqN2HEpnjg4eHhnea1EUC+uG8Y7cr/Q0qNh4eHt+Y9yrHfgs9KRd4ew8PDwzvNa+OJc4v7rAjVAS4eHh7eTbzNRB+j0ZaE9pgCHh4e3u/w8s5Rvny3E42mGz9iPDw8vL/PO90GG8YfeHh4eC/lJTFrvk1PykYCjsIIPDw8vAO82SWSxtgmls1LRb3jxsPDw1vwZg2w4lRXXGY2RwRu7u/h4eHhPb/mO2Mgac6EJs/GAAAAAElFTkSuQmCC">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/wechat.png">
+          
+          </a>
+        
+      
+        
+          <a class="-mob-share-weibo" title="微博" rel="external nofollow noopener noreferrer" href="http://service.weibo.com/share/share.php?url=https://wjwrobot.github.io/2020/03/12/An-Introduction-to-Rust-2/&title=An Introduction to Rust -- Part 2 | faust's blog&summary=An Introduction to the Rust language – part 2.">
+            
+              <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/weibo.png">
+            
+          </a>
+        
+      
+        
+          <a class="qrcode" rel="external nofollow noopener noreferrer" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3awU7DMBAEUP7/p4vECYkSZnZjCtLzqSpt4hckrzvrt7d4PD7G59efx9dPfvd+cs3v7vL1CrcNPDw8vNHUry83u/H1+/ljyvFP7oiHh4d3jJcUg7aEXC/612Um+Vb0QPHw8PBeysuX6ZaalxA8PDy8/8WbFYzrz7RbeTw8PLy/w7vrx/9jNNrI+EjWgoeHhxfzZg2w174+3t/Dw8PDG3XVZ5vdJGLIDxNsZouHh4d3gpdPZdP0ymPf9jBWVDDw8PDwDvM2k2gbWvl18pk8eQcPDw/vVl6yhU2oSVMqmVbxP0m+hYeHh3eMNztEtapFi5S1+AGAh4eHd4DXRgCz8OKuB9eGFHh4eHjneJulf3ZAqt0ob8IRPDw8vNO8NmxN4oY2RGiD4FV3Dg8PD2/B20xxdmBrBsijZzw8PLwTvH2LawaYMdrAAg8PD+8Eb9PCzxtabfnJ5xNdHw8PD+9WXt702jS08sKQt76iR4OHh4d3mNcGuO1xq/ZRtsUDDw8P73d4s/ZSWzzarXNbYIpNOR4eHt6a107ievvbRsCzYlMUFTw8PLwDvHwSeXzQ/nWzaW5bbnh4eHh38fatqXZC7b1mATEeHh7eOV5bQ/KWVV4GZmFHsa3Hw8PDO8BLftjnEcBmkz2LgPHw8PBexZsdC9hEG+2Rr7YxhoeHh3eCtzlWlWxqN2HEpnjg4eHhnea1EUC+uG8Y7cr/Q0qNh4eHt+Y9yrHfgs9KRd4ew8PDwzvNa+OJc4v7rAjVAS4eHh7eTbzNRB+j0ZaE9pgCHh4e3u/w8s5Rvny3E42mGz9iPDw8vL/PO90GG8YfeHh4eC/lJTFrvk1PykYCjsIIPDw8vAO82SWSxtgmls1LRb3jxsPDw1vwZg2w4lRXXGY2RwRu7u/h4eHhPb/mO2Mgac6EJs/GAAAAAElFTkSuQmCC">
+          
+            <img src="https://cdn.jsdelivr.net/gh/xaoxuu/assets@19.1.9/logo/128/qrcode.png">
+          
+          </a>
+        
+      
+    </div>
+  </div>
+
+
+            
+          </section>
+        
+
+        
+            <div class="prev-next">
+                
+                
+                    <section class="next">
+                        <span class="art-item-right" aria-hidden="true">
+                            <h6>Next&nbsp;<i class="fas fa-chevron-right" aria-hidden="true"></i></h6>
+                            <h4>
+                                <a href="/2020/02/13/Ensemble-Learning-and-Random-Forests/" rel="prev" title="Ensemble Learning and Random Forests">
+                                    
+                                        Ensemble Learning and Random Forests
+                                    
+                                </a>
+                            </h4>
+                            
+                                
+                                <h6 class="tags">
+                                    <a class="tag" href="/tags/Machine-Learning/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Machine Learning</a> <a class="tag" href="/tags/Ensemble-Learning/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Ensemble Learning</a> <a class="tag" href="/tags/Random-Forest/"><i class="fas fa-hashtag fa-fw" aria-hidden="true"></i>Random Forest</a>
+                                </h6>
+                            
+                        </span>
+                    </section>
+                
+            </div>
+        
+
+    </section>
+
+</article>
+
+<!-- 根据页面mathjax变量决定是否加载MathJax数学公式js -->
+
+
+<br>
+
+<!-- 显示推荐文章和评论 -->
+
+
+
+  <article class="post white-box comments">
+    <section class="article typo">
+
+      
+        
+
+    <div class="recommended_posts">
+        <h4><i class="fas fa-bookmark fa-fw" aria-hidden="true"></i>&nbsp;Related Posts</h4>
+        <ul>
+            
+                <li><a href="https://wjwrobot.github.io/2020/02/13/Ensemble-Learning-and-Random-Forests/">Ensemble Learning and Random Forests</a></li>
+            
+                <li><a href="https://wjwrobot.github.io/2020/02/13/The-Solutions-for-LeetCode-Problems/">The Solutions for LeetCode Problems</a></li>
+            
+                <li><a href="https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust-1/">An Introduction to Rust -- Part 1</a></li>
+            
+                <li><a href="https://wjwrobot.github.io/2020/02/03/PyTorch-Basic/">PyTorch Basic</a></li>
+            
+        </ul>
+    </div>
+
+
+      
+
+      
+        <h4><i class="fas fa-comments fa-fw" aria-hidden="true"></i>&nbsp;Comments</h4>
+        
+          <section id="comments">
+            <div id="disqus_thread">
+              ⚠️  Unable to load comment system, please make sure your network can access <a href="https://disqus.com">Disqus</a> 。
+            </div>
+          </section>
+        
+        
+        
+      
+    </section>
+  </article>
+
+
+
+<script>
+    window.subData = {
+        title: 'An Introduction to Rust -- Part 2',
+        tools: true
+    }
+</script>
+
+
+        </div>
+        <aside class='l_side'>
+            
+  
+  
+    
+      
+      
+        <section class="author">
+  <div class="content pure">
+    
+      <div class="avatar">
+        <img class="avatar" src="https://cdn.jsdelivr.net/gh/wjwrobot/dot_files@1.0/assets/rick.jpg">
+      </div>
+    
+    
+    
+      <div class="social-wrapper">
+        
+          
+            <a href="/atom.xml" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-rss" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://github.com/wjwrobot" class="social flat-btn" target="_blank" rel="external"><i class="social fab fa-github" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="mailto:wjwsuper123@gmail.com" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-envelope" aria-hidden="true"></i></a>
+          
+        
+          
+            <a href="https://www.xiami.com/user/229191753" class="social flat-btn" target="_blank" rel="external"><i class="social fas fa-music" aria-hidden="true"></i></a>
+          
+        
+      </div>
+    
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+  <section class="category">
+    
+<header class="pure">
+  <div><i class="fas fa-folder-open fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Categories</div>
+  
+</header>
+
+    <div class="content pure">
+      <ul class="entry">
+        
+          <li><a class="flat-box" title="/categories/C/" href="/categories/C/"><div class="name">C++</div><div class="badge">(3)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/JavaScript/" href="/categories/JavaScript/"><div class="name">JavaScript</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/LeetCode/" href="/categories/LeetCode/"><div class="name">LeetCode</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Linux/" href="/categories/Linux/"><div class="name">Linux</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/MachineLearning/" href="/categories/MachineLearning/"><div class="name">MachineLearning</div><div class="badge">(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Nodejs/" href="/categories/Nodejs/"><div class="name">Nodejs</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/PyTorch/" href="/categories/PyTorch/"><div class="name">PyTorch</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Python/" href="/categories/Python/"><div class="name">Python</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Rust/" href="/categories/Rust/"><div class="name">Rust</div><div class="badge">(2)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/Software/" href="/categories/Software/"><div class="name">Software</div><div class="badge">(1)</div></a></li>
+        
+          <li><a class="flat-box" title="/categories/other/" href="/categories/other/"><div class="name">other</div><div class="badge">(2)</div></a></li>
+        
+      </ul>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class="tagcloud">
+    
+<header class="pure">
+  <div><i class="fas fa-fire fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Hot Tags</div>
+  
+</header>
+
+    <div class="content pure">
+      <a href="/tags/Algorithms/" style="font-size: 14px; color: #999">Algorithms</a> <a href="/tags/Arch-Linux/" style="font-size: 14px; color: #999">Arch Linux</a> <a href="/tags/C/" style="font-size: 24px; color: #555">C++</a> <a href="/tags/Colaboratory/" style="font-size: 14px; color: #999">Colaboratory</a> <a href="/tags/Decision-Trees/" style="font-size: 14px; color: #999">Decision Trees</a> <a href="/tags/Ensemble-Learning/" style="font-size: 14px; color: #999">Ensemble Learning</a> <a href="/tags/JavaScript/" style="font-size: 14px; color: #999">JavaScript</a> <a href="/tags/Jupyter-Notebook/" style="font-size: 14px; color: #999">Jupyter Notebook</a> <a href="/tags/LeetCode/" style="font-size: 14px; color: #999">LeetCode</a> <a href="/tags/Linux/" style="font-size: 14px; color: #999">Linux</a> <a href="/tags/Machine-Learning/" style="font-size: 19px; color: #777">Machine Learning</a> <a href="/tags/OpenGL/" style="font-size: 14px; color: #999">OpenGL</a> <a href="/tags/PyTorch/" style="font-size: 14px; color: #999">PyTorch</a> <a href="/tags/Random-Forest/" style="font-size: 14px; color: #999">Random Forest</a> <a href="/tags/Rust/" style="font-size: 19px; color: #777">Rust</a> <a href="/tags/Speech-Recognition/" style="font-size: 14px; color: #999">Speech Recognition</a> <a href="/tags/git/" style="font-size: 14px; color: #999">git</a> <a href="/tags/hexo/" style="font-size: 14px; color: #999">hexo</a> <a href="/tags/linker/" style="font-size: 14px; color: #999">linker</a> <a href="/tags/nodejs/" style="font-size: 14px; color: #999">nodejs</a> <a href="/tags/test/" style="font-size: 19px; color: #777">test</a>
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        <section class="list">
+  
+<header class="pure">
+  <div><i class="fas fa-medal fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Projects</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="/project/" title="project/">
+    <i class="fas fa-arrow-right fa-fw"></i></a>
+  
+</header>
+
+  <div class="content pure">
+    <ul class="entry">
+      
+        <li><a class="flat-box" title="project/autodriver/" href="/project/autodriver/">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Auto Driver
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="project/nlp/" href="/project/nlp/">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Speech Recognition
+          </div>
+          
+        </a></li>
+      
+        <li><a class="flat-box" title="project/cv/" href="/project/cv/">
+          <div class="name">
+            
+              <i class="fas fa-cube fa-fw" aria-hidden="true"></i>
+            
+            &nbsp;&nbsp;Computer Vision
+          </div>
+          
+        </a></li>
+      
+    </ul>
+  </div>
+</section>
+
+      
+    
+  
+    
+      
+      
+        
+
+
+  <section class="music">
+    
+<header class="pure">
+  <div><i class="fas fa-compact-disc fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Recent Listening</div>
+  
+    <a class="rightBtn" target="_blank" rel="external nofollow noopener noreferrer" href="https://www.xiami.com/user/229191753" title="https://www.xiami.com/user/229191753">
+    <i class="far fa-heart fa-fw"></i></a>
+  
+</header>
+
+    <div class="content pure">
+      
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.css">
+  <div class="aplayer" data-theme="#1BCDFC" data-mode="circulation" data-server="xiami" data-type="playlist" data-id="354945703" data-volume="0.7">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.7.0/dist/APlayer.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/meting@1.1.0/dist/Meting.min.js"></script>
+
+
+    </div>
+  </section>
+
+
+      
+    
+  
+    
+      
+      
+        
+  <section class="toc-wrapper">
+    
+<header class="pure">
+  <div><i class="fas fa-list fa-fw" aria-hidden="true"></i>&nbsp;&nbsp;Table of Contents</div>
+  
+    <div class="wrapper"><a class="s-toc rightBtn" rel="external nofollow noopener noreferrer" href="javascript:void(0)"><i class="fas fa-thumbtack fa-fw"></i></a></div>
+  
+</header>
+
+    <div class="content pure">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#13-Functional-Language-Features-Iterators-and-Closures"><span class="toc-text">13. Functional Language Features: Iterators and Closures</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#16-Fearless-Concurrency"><span class="toc-text">16. Fearless Concurrency</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Threads-to-Run-Code-Simultaneously"><span class="toc-text">Using Threads to Run Code Simultaneously</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Create-a-New-Thread-with-spawn"><span class="toc-text">Create a New Thread with spawn</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Waiting-for-All-Threads-to-Finish-Using-join-Handles"><span class="toc-text">Waiting for All Threads to Finish Using join Handles</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-move-closures-with-Threads"><span class="toc-text">Using move closures with Threads</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Using-Message-Passing-to-Transfer-Data-Between-Threads"><span class="toc-text">Using Message Passing to Transfer Data Between Threads</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Channels-and-Ownership-Transference"><span class="toc-text">Channels and Ownership Transference</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sending-Multiple-Values-and-Seeing-the-Receiver-Waiting"><span class="toc-text">Sending Multiple Values and Seeing the Receiver Waiting</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Create-Multiple-Producers-by-Cloning-the-Transmitter"><span class="toc-text">Create Multiple Producers by Cloning the Transmitter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shared-State-Concurrency"><span class="toc-text">Shared-State Concurrency</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Using-Mutexes-to-Allow-Access-to-Data-from-One-Thread-at-a-Time"><span class="toc-text">Using Mutexes to Allow Access to Data from One Thread at a Time</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#The-API-of-Mutex-lt-T-gt"><span class="toc-text">The API of Mutex&lt;T&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sharing-a-Mutex-lt-T-gt-Between-Multiple-Threads"><span class="toc-text">Sharing a Mutex&lt;T&gt; Between Multiple Threads</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Multiple-Ownership-with-Multiple-Threads"><span class="toc-text">Multiple Ownership with Multiple Threads</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Atomic-Reference-Counting-with-Arc-lt-T-gt"><span class="toc-text">Atomic Reference Counting with Arc&lt;T&gt;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Similarities-Between-RefCell-lt-T-gt-Rc-lt-T-gt-and-Mutex-lt-T-gt-Arc-lt-T-gt"><span class="toc-text">Similarities Between RefCell&lt;T&gt;/Rc&lt;T&gt; and Mutex&lt;T&gt;/Arc&lt;T&gt;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Extensible-Concurrency-with-the-Sync-and-Send-Traits"><span class="toc-text">Extensible Concurrency with the Sync and Send Traits</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Allowing-Transference-of-Ownership-Between-Threads-with-Send"><span class="toc-text">Allowing Transference of Ownership Between Threads with Send</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Allowing-Access-from-Multiple-Threads-with-Sync"><span class="toc-text">Allowing Access from Multiple Threads with Sync</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Implementing-Send-and-Sync-Manually-is-Unsafe"><span class="toc-text">Implementing Send and Sync Manually is Unsafe</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#References"><span class="toc-text">References</span></a></li></ol>
+    </div>
+  </section>
+
+
+      
+    
+  
+
+
+        </aside>
+        <script>setLoadingBarProgress(60);</script>
+    </div>
+    <a class="s-top fas fa-arrow-up fa-fw" href='javascript:void(0)'></a>
+    </div>
+    <footer id="footer" class="clearfix">
+  
+    <div class="social-wrapper">
+      
+        
+          <a href="/atom.xml" class="social fas fa-rss flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://github.com/wjwrobot" class="social fab fa-github flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="mailto:wjwsuper123@gmail.com" class="social fas fa-envelope flat-btn" target="_blank" rel="external"></a>
+        
+      
+        
+          <a href="https://www.xiami.com/user/229191753" class="social fas fa-music flat-btn" target="_blank" rel="external"></a>
+        
+      
+    </div>
+  
+  <br>
+  <div>Use <a href="https://xaoxuu.com/wiki/material-x/" target="_blank" class="codename">Material X</a> as theme, total visits <span id="busuanzi_value_site_pv"><i class="fas fa-spinner fa-spin fa-fw" aria-hidden="true"></i></span> times. 
+  </div>
+</footer>
+
+    <script>setLoadingBarProgress(80);</script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+
+  <script>
+    var GOOGLE_CUSTOM_SEARCH_API_KEY = "";
+    var GOOGLE_CUSTOM_SEARCH_ENGINE_ID = "";
+    var ALGOLIA_API_KEY = "";
+    var ALGOLIA_APP_ID = "";
+    var ALGOLIA_INDEX_NAME = "";
+    var AZURE_SERVICE_NAME = "";
+    var AZURE_INDEX_NAME = "";
+    var AZURE_QUERY_KEY = "";
+    var BAIDU_API_ID = "";
+    var SEARCH_SERVICE = "hexo" || "hexo";
+    var ROOT = "/"||"/";
+    if(!ROOT.endsWith('/'))ROOT += '/';
+  </script>
+
+
+  
+    <script src="https://cdn.jsdelivr.net/npm/scrollreveal@4.0.5/dist/scrollreveal.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        const $reveal = $('.reveal');
+    		if ($reveal.length === 0) return;
+    		const sr = ScrollReveal({ distance: 0 });
+    		sr.reveal('.reveal');
+      });
+    </script>
+  
+  
+    <script src="https://cdn.jsdelivr.net/npm/node-waves@0.7.6/dist/waves.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        Waves.attach('.flat-btn', ['waves-button']);
+        Waves.attach('.float-btn', ['waves-button', 'waves-float']);
+        Waves.attach('.float-btn-light', ['waves-button', 'waves-float', 'waves-light']);
+        Waves.attach('.flat-box', ['waves-block']);
+        Waves.attach('.float-box', ['waves-block', 'waves-float']);
+        Waves.attach('.waves-image');
+        Waves.init();
+      });
+    </script>
+  
+  
+    <script async src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-busuanzi@2.3/js/busuanzi.pure.mini.js"></script>
+  
+  
+  
+
+
+  
+  
+  
+    
+      
+        <script>
+          var disqus_shortname = 'kurisu-makise';
+          
+            var disqus_url = 'https://wjwrobot.github.io/2020/03/12/An-Introduction-to-Rust-2/';
+          
+          (function(){
+            var dsq = document.createElement('script');
+            dsq.type = 'text/javascript';
+            dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+          })();
+        </script>
+      
+      
+      
+    
+  
+  
+    
+    <script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.1.18/js/app.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/xaoxuu/cdn-material-x@19.1.18/js/search.js"></script>
+    
+  
+
+
+
+
+
+
+    <script>setLoadingBarProgress(100);</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+</html>

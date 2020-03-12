@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust/</loc>
+    <loc>https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust-1/</loc>
     
-    <lastmod>2020-03-06T14:17:51.439Z</lastmod>
+    <lastmod>2020-03-12T14:07:07.264Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://wjwrobot.github.io/2020/03/12/An-Introduction-to-Rust-2/</loc>
+    
+    <lastmod>2020-03-12T14:06:48.194Z</lastmod>
     
   </url>
   

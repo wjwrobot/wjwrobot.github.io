@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust/</loc>
-    <lastmod>2020-03-06</lastmod>
+    <loc>https://wjwrobot.github.io/2020/02/09/An-Introduction-to-Rust-1/</loc>
+    <lastmod>2020-03-12</lastmod>
+  </url>  <url>
+    <loc>https://wjwrobot.github.io/2020/03/12/An-Introduction-to-Rust-2/</loc>
+    <lastmod>2020-03-12</lastmod>
   </url>  <url>
     <loc>https://wjwrobot.github.io/2019/05/05/Install-and-Configure-Arch-Linux/</loc>
     <lastmod>2020-02-16</lastmod>
